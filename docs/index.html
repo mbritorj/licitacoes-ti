@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Licitações de TI · ISAKMP</title>
+<style>
+:root{
+  --bg:#f5f6f4; --surface:#ffffff; --surface-2:#eef0ec; --line:#dcdfd8;
+  --ink:#1b211d; --ink-2:#4d5650; --ink-3:#7a837d;
+  --accent:#0f6b5c; --accent-ink:#ffffff; --accent-soft:#dcefe9;
+  --warn:#a35a00; --warn-soft:#fbecd6; --danger:#b3261e; --danger-soft:#f9dedc;
+  --info:#2a5db0; --info-soft:#e1eaf9; --violet:#6a45a8; --violet-soft:#ece4f7;
+  --radius:10px; --shadow:0 1px 2px rgba(20,30,25,.06),0 2px 8px rgba(20,30,25,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121614; --surface:#1a1f1c; --surface-2:#232a26; --line:#2f3732;
+    --ink:#e7ebe8; --ink-2:#b4bdb7; --ink-3:#86908a;
+    --accent:#4fc1a8; --accent-ink:#0d1a16; --accent-soft:#1d3a33;
+    --warn:#f0b35a; --warn-soft:#3a2c17; --danger:#f2867e; --danger-soft:#3d1e1c;
+    --info:#8fb3f0; --info-soft:#1d2a40; --violet:#c2a6ef; --violet-soft:#2c2340;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121614; --surface:#1a1f1c; --surface-2:#232a26; --line:#2f3732;
+  --ink:#e7ebe8; --ink-2:#b4bdb7; --ink-3:#86908a;
+  --accent:#4fc1a8; --accent-ink:#0d1a16; --accent-soft:#1d3a33;
+  --warn:#f0b35a; --warn-soft:#3a2c17; --danger:#f2867e; --danger-soft:#3d1e1c;
+  --info:#8fb3f0; --info-soft:#1d2a40; --violet:#c2a6ef; --violet-soft:#2c2340;
+  --shadow:none;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 48px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:18px}
+h1{font-size:22px;margin:0;letter-spacing:-.01em}
+h1 small{display:block;font-size:13px;font-weight:500;color:var(--ink-3);letter-spacing:0;margin-top:2px}
+.status{font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block}
+.dot.parcial{background:var(--warn)} .dot.falha{background:var(--danger)}
+.btn{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer}
+.btn:hover{border-color:var(--ink-3)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;box-shadow:var(--shadow);cursor:pointer;text-align:left;font:inherit;color:inherit}
+.kpi:hover{border-color:var(--ink-3)}
+.kpi b{display:block;font-size:26px;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12.5px;color:var(--ink-2)}
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px;display:grid;gap:10px;margin-bottom:14px;box-shadow:var(--shadow)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row label.lbl{font-size:12px;color:var(--ink-3);min-width:78px;text-transform:uppercase;letter-spacing:.04em}
+input[type=search],select{font:inherit;font-size:14px;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+input[type=search]{flex:1;min-width:200px}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:5px 11px;cursor:pointer;user-select:none}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.toggle{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);cursor:pointer}
+.toggle input{accent-color:var(--accent);width:16px;height:16px}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin:0 2px 10px}
+.list{display:grid;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:6px 18px}
+.card.urg{border-left:4px solid var(--danger)}
+.obj{font-weight:600;font-size:15px;line-height:1.35;margin:0}
+.org{font-size:13px;color:var(--ink-2)}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.b{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
+.b.serv{background:var(--accent-soft);color:var(--accent)}
+.b.equip{background:var(--info-soft);color:var(--info)}
+.b.lic{background:var(--violet-soft);color:var(--violet)}
+.b.me{background:var(--warn-soft);color:var(--warn)}
+.b.novo{background:var(--danger-soft);color:var(--danger)}
+.b.fab{background:var(--ink);color:var(--bg)}
+.b.cnae{background:transparent;border:1px dashed var(--ink-3);color:var(--ink-3);font-weight:500}
+.side{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:2px;min-width:150px}
+.valor{font-weight:700;font-variant-numeric:tabular-nums}
+.prazo{font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.prazo strong{color:var(--ink)}
+.prazo.urg strong{color:var(--danger)}
+.links{display:flex;gap:10px;margin-top:6px;font-size:13px}
+.links a{color:var(--accent);text-decoration:none;font-weight:600}
+.links a:hover{text-decoration:underline}
+.empty{padding:40px 16px;text-align:center;color:var(--ink-2);background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius)}
+details.err{font-size:12.5px;color:var(--ink-2);margin-top:4px}
+details.err pre{white-space:pre-wrap;background:var(--surface-2);padding:8px;border-radius:8px;max-height:180px;overflow:auto}
+footer{margin-top:28px;font-size:12px;color:var(--ink-3)}
+@media (max-width:760px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .card{grid-template-columns:1fr}
+  .side{text-align:left;align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:4px 14px;min-width:0}
+  .row label.lbl{min-width:100%}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Licitações de TI <small id="sub">ISAKMP · propostas em aberto</small></h1>
+    <div class="status">
+      <span class="dot" id="dot"></span><span id="upd">Carregando…</span>
+      <button class="btn" id="csv" type="button">Exportar CSV</button>
+      <button class="btn" id="theme" type="button" aria-label="Alternar tema claro ou escuro">Tema</button>
+    </div>
+  </header>
+
+  <section class="kpis" aria-label="Resumo">
+    <button class="kpi" data-kpi="todas" type="button"><b id="k1">–</b><span>abertas</span></button>
+    <button class="kpi" data-kpi="novas" type="button"><b id="k2">–</b><span>novas hoje</span></button>
+    <button class="kpi" data-kpi="urg" type="button"><b id="k3">–</b><span>encerram em até 3 dias</span></button>
+    <button class="kpi" data-kpi="me" type="button"><b id="k4">–</b><span>exclusivas ou até o limite ME/EPP</span></button>
+  </section>
+
+  <section class="filters" aria-label="Filtros">
+    <div class="row"><input type="search" id="q" placeholder="Buscar no objeto, órgão ou município (ex.: cisco, suporte, Niterói)"></div>
+    <div class="row"><label class="lbl">Tipo</label><span id="fcat" class="row"></span></div>
+    <div class="row"><label class="lbl">UF</label><span id="fuf" class="row"></span></div>
+    <div class="row">
+      <label class="lbl">Mais</label>
+      <select id="fmod" aria-label="Modalidade"><option value="">Todas as modalidades</option></select>
+      <select id="fprazo" aria-label="Prazo">
+        <option value="">Qualquer prazo</option><option value="3">Até 3 dias</option>
+        <option value="7">Até 7 dias</option><option value="15">Até 15 dias</option><option value="30">Até 30 dias</option>
+      </select>
+      <select id="ord" aria-label="Ordenar">
+        <option value="enc">Encerramento mais próximo</option><option value="pub">Publicação mais recente</option>
+        <option value="valor_d">Maior valor</option><option value="valor_a">Menor valor</option>
+      </select>
+      <label class="toggle"><input type="checkbox" id="fme"> Só ME/EPP</label>
+      <label class="toggle"><input type="checkbox" id="fnovo"> Só novas</label>
+      <label class="toggle"><input type="checkbox" id="fcnae"> Só aderentes ao CNAE atual</label>
+      <button class="btn" id="limpar" type="button">Limpar filtros</button>
+    </div>
+  </section>
+
+  <div class="meta"><span id="count"></span><span id="errwrap"></span></div>
+  <main class="list" id="list"></main>
+
+  <footer>
+    Fonte: PNCP, API pública de consulta (contratações com recebimento de propostas em aberto). A classificação é automática, por palavras-chave no objeto; confira sempre o edital.
+    "ME/EPP" vem dos itens publicados no PNCP (participação exclusiva ou cota reservada) ou do texto do objeto.
+  </footer>
+</div>
+
+<script>
+const CATS = {"Serviço":"serv","Equipamento":"equip","Licença/Software":"lic"};
+const S = {q:"", cats:new Set(), ufs:new Set(), mod:"", prazo:"", ord:"enc", me:false, novo:false, cnae:false};
+let DATA = null, ITENS = [];
+
+const $ = id => document.getElementById(id);
+const fmtBRL = v => (v==null||isNaN(v)) ? "valor sigiloso/não informado" : Number(v).toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0});
+const parseD = s => s ? new Date(s.length<=10 ? s+"T00:00:00" : s) : null;
+const fmtD = d => d ? d.toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",year:"2-digit",hour:"2-digit",minute:"2-digit"}) : "–";
+const norm = s => (s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const esc = s => String(s??"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function salvar(){ try{ localStorage.setItem("filtros-licit", JSON.stringify({...S, cats:[...S.cats], ufs:[...S.ufs]})); }catch(e){} }
+function restaurar(){
+  try{ const o = JSON.parse(localStorage.getItem("filtros-licit")||"null"); if(!o) return;
+    Object.assign(S, o, {cats:new Set(o.cats||[]), ufs:new Set(o.ufs||[])}); }catch(e){}
+}
+function tema(){
+  try{ const t = localStorage.getItem("tema-licit"); if(t) document.documentElement.dataset.theme = t; }catch(e){}
+  $("theme").onclick = () => {
+    const atual = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark":"light");
+    const novo = atual==="dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = novo; try{ localStorage.setItem("tema-licit", novo); }catch(e){}
+  };
+}
+
+function enriquecer(i){
+  const enc = parseD(i.encerramento);
+  const dias = enc ? (enc - Date.now())/864e5 : null;
+  const limite = DATA.valor_limite_me_epp || 80000;
+  const me = i.beneficio==="Exclusiva ME/EPP" || i.beneficio==="Parcial ME/EPP" || i.me_epp_texto || (i.valor!=null && i.valor>0 && i.valor<=limite);
+  const hoje = DATA.atualizado_em ? DATA.atualizado_em.slice(0,10) : "";
+  return {...i, _enc:enc, _dias:dias, _me:me, _novo:i.primeiro_visto===hoje,
+    _aderente:(i.categorias||[]).includes("Serviço"),
+    _busca:norm([i.objeto,i.orgao,i.unidade,i.municipio,i.uf,(i.termos||[]).join(" "),(i.fabricantes||[]).join(" ")].join(" "))};
+}
+
+function chips(el, valores, set, rotulo=v=>v){
+  el.innerHTML = "";
+  valores.forEach(v => {
+    const b = document.createElement("button"); b.type="button"; b.className="chip"; b.textContent=rotulo(v);
+    b.setAttribute("aria-pressed", set.has(v)); b.onclick = () => { set.has(v)?set.delete(v):set.add(v); b.setAttribute("aria-pressed", set.has(v)); render(); };
+    el.appendChild(b);
+  });
+}
+
+function filtrar(){
+  const q = norm(S.q).split(/\s+/).filter(Boolean);
+  let r = ITENS.filter(i =>
+    (!q.length || q.every(t => i._busca.includes(t))) &&
+    (!S.cats.size || (i.categorias||[]).some(c => S.cats.has(c))) &&
+    (!S.ufs.size || S.ufs.has(i.uf)) &&
+    (!S.mod || i.modalidade===S.mod) &&
+    (!S.prazo || (i._dias!=null && i._dias <= Number(S.prazo))) &&
+    (!S.me || i._me) && (!S.novo || i._novo) && (!S.cnae || i._aderente)
+  );
+  const k = {enc:(a,b)=>(a._enc||Infinity)-(b._enc||Infinity), pub:(a,b)=>(b.publicacao||"").localeCompare(a.publicacao||""),
+             valor_d:(a,b)=>(b.valor??-1)-(a.valor??-1), valor_a:(a,b)=>(a.valor??Infinity)-(b.valor??Infinity)}[S.ord];
+  return r.sort(k);
+}
+
+function prazoTxt(i){
+  if(i._dias==null) return "encerramento não informado";
+  if(i._dias < 0) return "encerrada";
+  if(i._dias < 1){ const h = Math.max(1, Math.round(i._dias*24)); return `<strong>${h}h</strong> para encerrar`; }
+  return `<strong>${Math.floor(i._dias)} dia${Math.floor(i._dias)>=2?"s":""}</strong> para encerrar`;
+}
+
+function card(i){
+  const urg = i._dias!=null && i._dias <= 3;
+  const cats = (i.categorias||[]).map(c => `<span class="b ${CATS[c]||""}">${esc(c)}</span>`).join("");
+  const fabs = (i.fabricantes||[]).map(f => `<span class="b fab">${esc(f.toUpperCase())}</span>`).join("");
+  const me = i.beneficio==="Exclusiva ME/EPP" ? '<span class="b me">Exclusiva ME/EPP</span>'
+          : i.beneficio==="Parcial ME/EPP" ? '<span class="b me">Cota/itens ME/EPP</span>'
+          : i.me_epp_texto ? '<span class="b me">ME/EPP (texto)</span>'
+          : (i._me ? '<span class="b me">Até limite ME/EPP</span>' : "");
+  const cnae = i._aderente ? "" : '<span class="b cnae" title="Fornecimento de bens/licenças exige CNAE de comércio, que a ISAKMP ainda não tem">exige CNAE de comércio</span>';
+  return `<article class="card${urg?" urg":""}">
+    <div>
+      <p class="obj">${esc(i.objeto)}</p>
+      <div class="org">${esc(i.orgao)}${i.unidade && i.unidade!==i.orgao ? " · "+esc(i.unidade):""} · ${esc(i.municipio||"")}/${esc(i.uf||"")}</div>
+      <div class="badges">${i._novo?'<span class="b novo">NOVA</span>':""}${cats}${fabs}${me}<span class="b">${esc(i.modalidade||"")}${i.numero?" "+esc(i.numero):""}</span>${i.srp?'<span class="b">SRP</span>':""}${cnae}</div>
+      <div class="links">${i.link_pncp?`<a href="${esc(i.link_pncp)}" target="_blank" rel="noopener">Ver no PNCP ↗</a>`:""}${i.link_origem?`<a href="${esc(i.link_origem)}" target="_blank" rel="noopener">Portal da disputa ↗</a>`:""}</div>
+    </div>
+    <div class="side">
+      <span class="valor">${fmtBRL(i.valor)}</span>
+      <span class="prazo${urg?" urg":""}">${prazoTxt(i)}</span>
+      <span class="prazo">até ${fmtD(i._enc)}</span>
+    </div>
+  </article>`;
+}
+
+let ultima = [];
+function render(){
+  salvar();
+  ultima = filtrar();
+  $("count").textContent = `${ultima.length} de ${ITENS.length} licitações`;
+  $("list").innerHTML = ultima.length ? ultima.map(card).join("") :
+    `<div class="empty">${ITENS.length ? "Nenhuma licitação com esses filtros." : "Ainda não há dados. O robô preenche esta página após a primeira execução no GitHub Actions."}</div>`;
+}
+
+function exportarCSV(){
+  const cols = ["encerramento","uf","municipio","orgao","objeto","categorias","modalidade","numero","valor","beneficio","link_pncp","link_origem"];
+  const linhas = [cols.join(";")].concat(ultima.map(i => cols.map(c => {
+    let v = i[c]; if(Array.isArray(v)) v = v.join(", "); v = v==null ? "" : String(v);
+    return '"' + v.replace(/"/g,'""') + '"';
+  }).join(";")));
+  const blob = new Blob(["﻿"+linhas.join("\n")], {type:"text/csv;charset=utf-8"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = `licitacoes-ti-${new Date().toISOString().slice(0,10)}.csv`; a.click(); URL.revokeObjectURL(a.href);
+}
+
+function ligar(){
+  $("q").value = S.q; $("fmod").value = S.mod; $("fprazo").value = S.prazo; $("ord").value = S.ord;
+  $("fme").checked = S.me; $("fnovo").checked = S.novo; $("fcnae").checked = S.cnae;
+  $("q").oninput = e => { S.q = e.target.value; render(); };
+  $("fmod").onchange = e => { S.mod = e.target.value; render(); };
+  $("fprazo").onchange = e => { S.prazo = e.target.value; render(); };
+  $("ord").onchange = e => { S.ord = e.target.value; render(); };
+  $("fme").onchange = e => { S.me = e.target.checked; render(); };
+  $("fnovo").onchange = e => { S.novo = e.target.checked; render(); };
+  $("fcnae").onchange = e => { S.cnae = e.target.checked; render(); };
+  $("csv").onclick = exportarCSV;
+  $("limpar").onclick = () => { Object.assign(S,{q:"",mod:"",prazo:"",ord:"enc",me:false,novo:false,cnae:false}); S.cats.clear(); S.ufs.clear(); montarFiltros(); ligar(); render(); };
+  document.querySelectorAll(".kpi").forEach(k => k.onclick = () => {
+    Object.assign(S,{prazo:"",me:false,novo:false});
+    if(k.dataset.kpi==="novas") S.novo = true;
+    if(k.dataset.kpi==="urg") S.prazo = "3";
+    if(k.dataset.kpi==="me") S.me = true;
+    ligar(); render();
+  });
+}
+
+function montarFiltros(){
+  chips($("fcat"), Object.keys(CATS), S.cats);
+  const ufs = DATA.ufs && DATA.ufs.length ? DATA.ufs : [...new Set(ITENS.map(i=>i.uf))].sort();
+  chips($("fuf"), ufs, S.ufs);
+  const mods = [...new Set(ITENS.map(i=>i.modalidade).filter(Boolean))].sort();
+  $("fmod").innerHTML = '<option value="">Todas as modalidades</option>' + mods.map(m=>`<option>${esc(m)}</option>`).join("");
+}
+
+async function iniciar(){
+  tema(); restaurar();
+  try{
+    const r = await fetch("data.json?t=" + Date.now(), {cache:"no-store"});
+    DATA = await r.json();
+  }catch(e){
+    DATA = {itens:[], execucao:{status:"falha", erros:["Não foi possível ler data.json: "+e]}};
+  }
+  ITENS = (DATA.itens||[]).map(enriquecer).filter(i => i._dias==null || i._dias >= 0);
+  const ex = DATA.execucao || {};
+  $("dot").className = "dot " + (ex.status==="ok" ? "" : (ex.status||"falha"));
+  $("upd").textContent = DATA.atualizado_em ? `Atualizado em ${fmtD(parseD(DATA.atualizado_em))}${ex.status==="parcial"?" (coleta parcial)":ex.status==="falha"?" (última coleta falhou)":""}` : "Sem dados ainda";
+  if(DATA.ufs) $("sub").textContent = `ISAKMP · propostas em aberto · ${DATA.ufs.join(", ")}`;
+  if(ex.erros && ex.erros.length){
+    $("errwrap").innerHTML = `<details class="err"><summary>${ex.erros.length} aviso(s) na coleta</summary><pre>${esc(ex.erros.join("\n"))}</pre></details>`;
+  }
+  $("k1").textContent = ITENS.length;
+  $("k2").textContent = ITENS.filter(i=>i._novo).length;
+  $("k3").textContent = ITENS.filter(i=>i._dias!=null && i._dias<=3).length;
+  $("k4").textContent = ITENS.filter(i=>i._me).length;
+  montarFiltros(); ligar(); render();
+}
+iniciar();
+</script>
+</body>
+</html>
