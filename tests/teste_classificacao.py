@@ -18,6 +18,9 @@ DEVE_ENTRAR = [
  ("Aquisição de servidores de rack e storage para o data center", None),
  ("Contratação de empresa para prestação de serviços de telefonia IP (VoIP)", "Serviço"),
  ("Aquisição de nobreaks e racks para a sala de servidores e switch de núcleo", None),
+ ("Prestação de serviços de suporte técnico aos usuários de Tecnologia da Informação", "Serviço"),
+ ("Contratação de licença da plataforma Burp Suite Professional por 60 meses", "Licença/Software"),
+ ("Aquisição de licenças perpétuas dos softwares ZENworks", "Licença/Software"),
 ]
 NAO_DEVE = [
  "Aquisição de medicamentos para a rede municipal de saúde",
@@ -32,6 +35,10 @@ NAO_DEVE = [
  "Manutenção preventiva de elevadores",
  "Aquisição de mobiliário escolar",
  "Serviço de transporte escolar",
+ "Aquisição de relógio de ponto eletrônico com reconhecimento facial e software",
+ "Locação de contêineres com suporte técnico e transporte",
+ "Manutenção preventiva, corretiva e suporte técnico dos sistemas de áudio e vídeo do Plenário",
+ "Monitoramento e rastreamento de veículos com software próprio",
 ]
 falhas = 0
 for txt, cat in DEVE_ENTRAR:

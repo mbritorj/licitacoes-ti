@@ -81,11 +81,37 @@ input[type=search]{flex:1;min-width:200px}
 .links{display:flex;gap:10px;margin-top:6px;font-size:13px}
 .links a{color:var(--accent);text-decoration:none;font-weight:600}
 .links a:hover{text-decoration:underline}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tab{font:inherit;font-size:14px;font-weight:600;background:none;border:0;border-bottom:3px solid transparent;color:var(--ink-2);padding:8px 12px;cursor:pointer;margin-bottom:-1px}
+.tab[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.tab small{font-weight:500;color:var(--ink-3);margin-left:4px}
+.b.peq{background:var(--warn-soft);color:var(--warn);border:1px solid currentColor}
+.intro{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;display:grid;gap:10px;margin-bottom:14px;box-shadow:var(--shadow)}
+.intro p{margin:0;color:var(--ink-2);font-size:14px;max-width:80ch}
+.intro .cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none}
+.plats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.plats div{border-top:2px solid var(--accent);padding-top:6px;display:grid;gap:1px}
+.plats b{font-size:20px;font-variant-numeric:tabular-nums}
+.plats span{font-size:13px;font-weight:600}
+.plats small{font-size:12px;color:var(--ink-3);line-height:1.35}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);display:grid;gap:6px}
+.pcard h3{margin:0;font-size:16px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.pcard h3 small{font-size:12.5px;font-weight:500;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.pcard dl{display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 12px;margin:4px 0 0;font-size:13.5px}
+.pcard dt{color:var(--ink-3);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;padding-top:2px}
+.pcard dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.pcard a{color:var(--accent);font-weight:600;text-decoration:none}
+.pcard .src a{font-weight:400;color:var(--ink-3)}
+.pcard .src{font-size:12px;color:var(--ink-3)}
+.nf{color:var(--ink-3);font-size:12.5px}
 .empty{padding:40px 16px;text-align:center;color:var(--ink-2);background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius)}
 details.err{font-size:12.5px;color:var(--ink-2);margin-top:4px}
 details.err pre{white-space:pre-wrap;background:var(--surface-2);padding:8px;border-radius:8px;max-height:180px;overflow:auto}
 footer{margin-top:28px;font-size:12px;color:var(--ink-3)}
 @media (max-width:760px){
+  .plats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pcard dl{grid-template-columns:minmax(0,1fr)}
   .kpis{grid-template-columns:repeat(2,1fr)}
   .card{grid-template-columns:1fr}
   .side{text-align:left;align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:4px 14px;min-width:0}
@@ -104,6 +130,12 @@ footer{margin-top:28px;font-size:12px;color:var(--ink-3)}
     </div>
   </header>
 
+  <nav class="tabs" role="tablist" aria-label="Seções">
+    <button class="tab" role="tab" id="t-lic" aria-selected="true" aria-controls="tab-lic" type="button">Licitações</button>
+    <button class="tab" role="tab" id="t-pref" aria-selected="false" aria-controls="tab-pref" type="button">Prefeituras pequenas RJ<small id="t-pref-n"></small></button>
+  </nav>
+
+  <div id="tab-lic" role="tabpanel" aria-labelledby="t-lic">
   <section class="kpis" aria-label="Resumo">
     <button class="kpi" data-kpi="todas" type="button"><b id="k1">–</b><span>abertas</span></button>
     <button class="kpi" data-kpi="novas" type="button"><b id="k2">–</b><span>novas hoje</span></button>
@@ -129,12 +161,33 @@ footer{margin-top:28px;font-size:12px;color:var(--ink-3)}
       <label class="toggle"><input type="checkbox" id="fme"> Só ME/EPP</label>
       <label class="toggle"><input type="checkbox" id="fnovo"> Só novas</label>
       <label class="toggle"><input type="checkbox" id="fcnae"> Só aderentes ao CNAE atual</label>
+      <label class="toggle"><input type="checkbox" id="fpeq"> Só municípios pequenos do RJ</label>
       <button class="btn" id="limpar" type="button">Limpar filtros</button>
     </div>
   </section>
 
   <div class="meta"><span id="count"></span><span id="errwrap"></span></div>
   <main class="list" id="list"></main>
+  </div>
+
+  <div id="tab-pref" role="tabpanel" aria-labelledby="t-pref" hidden>
+    <section class="intro">
+      <p>Os 26 municípios do RJ com até 20 mil habitantes (Censo 2022). Pelo art. 176 da Lei 14.133/2021, eles têm até 1º de abril de 2027 para divulgar as contratações em meio eletrônico, então parte das compras ainda não chega ao PNCP. Quatro cadastros em plataformas cobrem 18 deles; nos outros 8, o caminho é ligar para o setor de licitações e pedir o CRC.</p>
+      <div class="plats" id="plats"></div>
+      <div class="cta">
+        <a class="btn primary" id="painel-link" href="#" target="_blank" rel="noopener">Marcar situação dos cadastros ↗</a>
+        <span class="nf">A situação (não iniciado, em andamento, cadastrado) e as anotações ficam no painel do Claude, compartilhado entre vocês.</span>
+      </div>
+    </section>
+    <section class="filters" aria-label="Filtros de prefeituras">
+      <div class="row">
+        <input type="search" id="pq" placeholder="Buscar município, região ou plataforma">
+        <select id="preg" aria-label="Região"><option value="">Todas as regiões</option></select>
+      </div>
+    </section>
+    <div class="meta"><span id="pcount"></span></div>
+    <div class="list" id="plist"></div>
+  </div>
 
   <footer>
     Fonte: PNCP, API pública de consulta (contratações com recebimento de propostas em aberto). A classificação é automática, por palavras-chave no objeto; confira sempre o edital.
@@ -144,8 +197,11 @@ footer{margin-top:28px;font-size:12px;color:var(--ink-3)}
 
 <script>
 const CATS = {"Serviço":"serv","Equipamento":"equip","Licença/Software":"lic"};
-const S = {q:"", cats:new Set(), ufs:new Set(), mod:"", prazo:"", ord:"enc", me:false, novo:false, cnae:false};
-let DATA = null, ITENS = [];
+const S = {q:"", cats:new Set(), ufs:new Set(), mod:"", prazo:"", ord:"enc", me:false, novo:false, cnae:false, peq:false};
+let DATA = null, ITENS = [], PREF = null, PEQ = new Map();
+const PS = {q:"", reg:""};
+const ALIAS = {"trajano de morais":"trajano de moraes", "comendador levy gasparian":"comendador levy gasparian"};
+const chaveMun = s => { const n = norm(s).replace(/[^a-z ]/g," ").replace(/\s+/g," ").trim(); return ALIAS[n] || n; };
 
 const $ = id => document.getElementById(id);
 const fmtBRL = v => (v==null||isNaN(v)) ? "valor sigiloso/não informado" : Number(v).toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0});
@@ -176,6 +232,7 @@ function enriquecer(i){
   const hoje = DATA.atualizado_em ? DATA.atualizado_em.slice(0,10) : "";
   return {...i, _enc:enc, _dias:dias, _me:me, _novo:i.primeiro_visto===hoje,
     _aderente:(i.categorias||[]).includes("Serviço"),
+    _peq:i.uf==="RJ" && PEQ.has(chaveMun(i.municipio)),
     _busca:norm([i.objeto,i.orgao,i.unidade,i.municipio,i.uf,(i.termos||[]).join(" "),(i.fabricantes||[]).join(" ")].join(" "))};
 }
 
@@ -196,7 +253,7 @@ function filtrar(){
     (!S.ufs.size || S.ufs.has(i.uf)) &&
     (!S.mod || i.modalidade===S.mod) &&
     (!S.prazo || (i._dias!=null && i._dias <= Number(S.prazo))) &&
-    (!S.me || i._me) && (!S.novo || i._novo) && (!S.cnae || i._aderente)
+    (!S.me || i._me) && (!S.novo || i._novo) && (!S.cnae || i._aderente) && (!S.peq || i._peq)
   );
   const k = {enc:(a,b)=>(a._enc||Infinity)-(b._enc||Infinity), pub:(a,b)=>(b.publicacao||"").localeCompare(a.publicacao||""),
              valor_d:(a,b)=>(b.valor??-1)-(a.valor??-1), valor_a:(a,b)=>(a.valor??Infinity)-(b.valor??Infinity)}[S.ord];
@@ -223,7 +280,7 @@ function card(i){
     <div>
       <p class="obj">${esc(i.objeto)}</p>
       <div class="org">${esc(i.orgao)}${i.unidade && i.unidade!==i.orgao ? " · "+esc(i.unidade):""} · ${esc(i.municipio||"")}/${esc(i.uf||"")}</div>
-      <div class="badges">${i._novo?'<span class="b novo">NOVA</span>':""}${cats}${fabs}${me}<span class="b">${esc(i.modalidade||"")}${i.numero?" "+esc(i.numero):""}</span>${i.srp?'<span class="b">SRP</span>':""}${cnae}</div>
+      <div class="badges">${i._novo?'<span class="b novo">NOVA</span>':""}${cats}${fabs}${me}<span class="b">${esc(i.modalidade||"")}${i.numero?" "+esc(i.numero):""}</span>${i.srp?'<span class="b">SRP</span>':""}${i._peq?'<span class="b peq" title="Município do RJ com até 20 mil habitantes">Município pequeno</span>':""}${cnae}</div>
       <div class="links">${i.link_pncp?`<a href="${esc(i.link_pncp)}" target="_blank" rel="noopener">Ver no PNCP ↗</a>`:""}${i.link_origem?`<a href="${esc(i.link_origem)}" target="_blank" rel="noopener">Portal da disputa ↗</a>`:""}</div>
     </div>
     <div class="side">
@@ -256,7 +313,7 @@ function exportarCSV(){
 
 function ligar(){
   $("q").value = S.q; $("fmod").value = S.mod; $("fprazo").value = S.prazo; $("ord").value = S.ord;
-  $("fme").checked = S.me; $("fnovo").checked = S.novo; $("fcnae").checked = S.cnae;
+  $("fme").checked = S.me; $("fnovo").checked = S.novo; $("fcnae").checked = S.cnae; $("fpeq").checked = S.peq;
   $("q").oninput = e => { S.q = e.target.value; render(); };
   $("fmod").onchange = e => { S.mod = e.target.value; render(); };
   $("fprazo").onchange = e => { S.prazo = e.target.value; render(); };
@@ -264,8 +321,9 @@ function ligar(){
   $("fme").onchange = e => { S.me = e.target.checked; render(); };
   $("fnovo").onchange = e => { S.novo = e.target.checked; render(); };
   $("fcnae").onchange = e => { S.cnae = e.target.checked; render(); };
+  $("fpeq").onchange = e => { S.peq = e.target.checked; render(); };
   $("csv").onclick = exportarCSV;
-  $("limpar").onclick = () => { Object.assign(S,{q:"",mod:"",prazo:"",ord:"enc",me:false,novo:false,cnae:false}); S.cats.clear(); S.ufs.clear(); montarFiltros(); ligar(); render(); };
+  $("limpar").onclick = () => { Object.assign(S,{q:"",mod:"",prazo:"",ord:"enc",me:false,novo:false,cnae:false,peq:false}); S.cats.clear(); S.ufs.clear(); montarFiltros(); ligar(); render(); };
   document.querySelectorAll(".kpi").forEach(k => k.onclick = () => {
     Object.assign(S,{prazo:"",me:false,novo:false});
     if(k.dataset.kpi==="novas") S.novo = true;
@@ -283,6 +341,65 @@ function montarFiltros(){
   $("fmod").innerHTML = '<option value="">Todas as modalidades</option>' + mods.map(m=>`<option>${esc(m)}</option>`).join("");
 }
 
+const PLATS = [
+  ["Compras.gov.br + SICAF", /compras\.gov/i],
+  ["Licitanet", /licitanet/i],
+  ["BLL Compras", /\bbll\b/i],
+  ["Portal de Compras Públicas", /portal de compras p/i],
+];
+function platDe(m){ const t = m.plataforma_disputa||""; for(const [n,rx] of PLATS){ if(rx.test(t) && !/^n[aã]o confirmado/i.test(t) && !/em 2021/i.test(t)) return n; } return null; }
+const vazio = v => !v || /^n[aã]o (encontrado|pesquisado)/i.test(v);
+function linkTxt(v){
+  if(vazio(v)) return '<span class="nf">não encontrado</span>';
+  if(/^https?:\/\//.test(v)) return `<a href="${esc(v)}" target="_blank" rel="noopener">${esc(v.replace(/^https?:\/\//,"").replace(/\/$/,"").slice(0,60))} ↗</a>`;
+  return esc(v);
+}
+function pcard(m){
+  const abertas = ITENS.filter(i => i._peq && chaveMun(i.municipio)===chaveMun(m.municipio)).length;
+  const pncp = /^sim/i.test(m.publica_pncp||"") ? '<span class="b serv">publica no PNCP</span>' : '<span class="b">PNCP não confirmado</span>';
+  const fontes = (m.fontes||[]).slice(0,3).map((u,k)=>`<a href="${esc(u)}" target="_blank" rel="noopener">fonte ${k+1}</a>`).join(" · ");
+  return `<article class="pcard">
+    <h3>${esc(m.municipio)} <small>${esc(m.regiao)} · ${Number(m.populacao).toLocaleString("pt-BR")} hab.</small></h3>
+    <div class="badges">${pncp}${platDe(m)?`<span class="b equip">${esc(platDe(m))}</span>`:'<span class="b cnae">sem plataforma eletrônica identificada</span>'}${abertas?`<button class="b peq" type="button" data-ver="${esc(m.municipio)}" style="cursor:pointer">${abertas} licitação(ões) de TI aberta(s)</button>`:""}</div>
+    <dl>
+      <dt>Plataforma</dt><dd>${esc(m.plataforma_disputa||"não encontrado")}</dd>
+      <dt>Como cadastrar</dt><dd>${esc(m.como_cadastrar||"não encontrado")}</dd>
+      <dt>Link</dt><dd>${linkTxt(m.link_cadastro)}</dd>
+      <dt>Contato</dt><dd>${vazio(m.contato)?'<span class="nf">não encontrado</span>':esc(m.contato)}</dd>
+      ${vazio(m.camara_municipal)?"":`<dt>Câmara</dt><dd>${esc(m.camara_municipal)}</dd>`}
+      ${m.observacoes?`<dt>Observação</dt><dd>${esc(m.observacoes)}</dd>`:""}
+    </dl>
+    ${fontes?`<div class="src">${fontes}</div>`:""}
+  </article>`;
+}
+function renderPref(){
+  if(!PREF){ $("plist").innerHTML = '<div class="empty">Não foi possível ler prefeituras.json.</div>'; return; }
+  const q = norm(PS.q);
+  const l = PREF.municipios.filter(m => (!q || norm([m.municipio,m.regiao,m.plataforma_disputa,m.como_cadastrar].join(" ")).includes(q)) && (!PS.reg || m.regiao===PS.reg));
+  $("pcount").textContent = `${l.length} de ${PREF.municipios.length} municípios · população IBGE, Censo 2022 · levantamento de outubro de 2026, confirme por telefone antes de enviar documentos`;
+  $("plist").innerHTML = l.length ? l.map(pcard).join("") : '<div class="empty">Nenhum município com esses filtros.</div>';
+}
+function montarPref(){
+  if(!PREF) return;
+  $("t-pref-n").textContent = PREF.municipios.length;
+  if(PREF.painel_situacao) $("painel-link").href = PREF.painel_situacao; else $("painel-link").hidden = true;
+  const cont = PLATS.map(([n]) => [n, PREF.municipios.filter(m => platDe(m)===n).map(m=>m.municipio)]);
+  $("plats").innerHTML = cont.map(([n,ms]) => `<div><b>${ms.length}</b><span>${esc(n)}</span><small>${esc(ms.join(", "))}</small></div>`).join("");
+  const regs = [...new Set(PREF.municipios.map(m=>m.regiao))].sort();
+  $("preg").innerHTML = '<option value="">Todas as regiões</option>' + regs.map(r=>`<option>${esc(r)}</option>`).join("");
+  $("pq").oninput = e => { PS.q = e.target.value; renderPref(); };
+  $("preg").onchange = e => { PS.reg = e.target.value; renderPref(); };
+  $("plist").onclick = e => { const b = e.target.closest("[data-ver]"); if(!b) return;
+    Object.assign(S,{q:b.dataset.ver, peq:true}); ligar(); render(); aba("lic"); };
+  renderPref();
+}
+function aba(qual){
+  const pref = qual==="pref";
+  $("tab-lic").hidden = pref; $("tab-pref").hidden = !pref;
+  $("t-lic").setAttribute("aria-selected", !pref); $("t-pref").setAttribute("aria-selected", pref);
+  try{ history.replaceState(null, "", pref ? "#prefeituras" : "#"); }catch(e){}
+}
+
 async function iniciar(){
   tema(); restaurar();
   try{
@@ -291,6 +408,11 @@ async function iniciar(){
   }catch(e){
     DATA = {itens:[], execucao:{status:"falha", erros:["Não foi possível ler data.json: "+e]}};
   }
+  try{
+    const rp = await fetch("prefeituras.json?t=" + Date.now(), {cache:"no-store"});
+    PREF = await rp.json();
+    PREF.municipios.forEach(m => PEQ.set(chaveMun(m.municipio), m));
+  }catch(e){ PREF = null; }
   ITENS = (DATA.itens||[]).map(enriquecer).filter(i => i._dias==null || i._dias >= 0);
   const ex = DATA.execucao || {};
   $("dot").className = "dot " + (ex.status==="ok" ? "" : (ex.status||"falha"));
@@ -303,7 +425,9 @@ async function iniciar(){
   $("k2").textContent = ITENS.filter(i=>i._novo).length;
   $("k3").textContent = ITENS.filter(i=>i._dias!=null && i._dias<=3).length;
   $("k4").textContent = ITENS.filter(i=>i._me).length;
-  montarFiltros(); ligar(); render();
+  montarFiltros(); ligar(); render(); montarPref();
+  $("t-lic").onclick = () => aba("lic"); $("t-pref").onclick = () => aba("pref");
+  if(location.hash === "#prefeituras") aba("pref");
 }
 iniciar();
 </script>

@@ -1,0 +1,423 @@
+{
+ "fonte_populacao": "IBGE, Censo 2022",
+ "levantamento": "2026-10",
+ "painel_situacao": "https://claude.ai/artifact/WSAH7fX45Vnk4mjdqScFJn",
+ "municipios": [
+  {
+   "municipio": "Macuco",
+   "plataforma_disputa": "BLL Compras (pregões eletrônicos de 2026, segundo agregador)",
+   "como_cadastrar": "CRC municipal não encontrado. Para disputar, cadastro na BLL Compras.",
+   "link_cadastro": "https://bllcompras.com",
+   "contato": "(22) 2554-1129 · Rua Dr. Mário Freire Martins, 100, Centro",
+   "publica_pncp": "não confirmado",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://alertalicitacao.com.br/!municipios/3302452",
+    "https://prefeituramacuco.rj.gov.br/transparencia/licitacao/aviso"
+   ],
+   "observacoes": "Contato tirado de modelo de edital antigo; confirmar. Fez dispensa de equipamentos e suprimentos de informática em set/2026.",
+   "populacao": 5415,
+   "regiao": "Serrana"
+  },
+  {
+   "municipio": "São José de Ubá",
+   "plataforma_disputa": "Licitanet; também pregão presencial",
+   "como_cadastrar": "CRC municipal não encontrado. Para disputar, cadastro na Licitanet.",
+   "link_cadastro": "https://licitanet.com.br",
+   "contato": "não encontrado",
+   "publica_pncp": "sim",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://pncp.gov.br/api/consulta/v1/orgaos/01614414000173/compras/2025/3",
+    "https://www.saojosedeuba.rj.gov.br/"
+   ],
+   "observacoes": "",
+   "populacao": 7070,
+   "regiao": "Noroeste"
+  },
+  {
+   "municipio": "Laje do Muriaé",
+   "plataforma_disputa": "Pregão presencial, concorrência presencial e muitas dispensas (avisos em sistemasplug.com.br/laje)",
+   "como_cadastrar": "não encontrado. Edital na Comissão Permanente de Licitação e no Portal da Transparência.",
+   "link_cadastro": "https://sistemasplug.com.br/laje/",
+   "contato": "(22) 3829-2372 · Praça Primeiro de Maio, 01, Centro (11h30 às 17h)",
+   "publica_pncp": "não confirmado",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://portal.laje.rj.gov.br/",
+    "https://sistemasplug.com.br/laje/visualizar.php?p=333"
+   ],
+   "observacoes": "Fez a Dispensa 013/2026 de rede estruturada e segurança da informação. Candidato prioritário: ligar para a CPL.",
+   "populacao": 7336,
+   "regiao": "Noroeste"
+  },
+  {
+   "municipio": "São Sebastião do Alto",
+   "plataforma_disputa": "Licitanet",
+   "como_cadastrar": "CRC na Unidade Cadastradora de Fornecedores da prefeitura, com análise dos documentos e renovação anual. Relação de documentos em PDF na página de licitações. Para disputar, cadastro na Licitanet.",
+   "link_cadastro": "https://ssalto.rj.gov.br/licitacoes/",
+   "contato": "licitacao@ssalto.rj.gov.br · (22) 2559-1160",
+   "publica_pncp": "sim",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://ssalto.rj.gov.br/licitacoes/",
+    "https://pncp.gov.br/api/consulta/v1/orgaos/28645786000113/compras/2026/88"
+   ],
+   "observacoes": "Atendimento sobre cadastro das 9h às 16h, Rua Dr. Julio Vieitas, 88, Centro.",
+   "populacao": 7750,
+   "regiao": "Serrana"
+  },
+  {
+   "municipio": "Comendador Levy Gasparian",
+   "plataforma_disputa": "Faz pregões eletrônicos em 2026, mas a plataforma não foi identificada",
+   "como_cadastrar": "não encontrado",
+   "link_cadastro": "https://www.levygasparian.rj.gov.br/licitacoes/licitacoes-2026/pregao-eletronico-2026/",
+   "contato": "não encontrado",
+   "publica_pncp": "não confirmado",
+   "camara_municipal": "Publica dispensas no PNCP.",
+   "fontes": [
+    "https://www.levygasparian.rj.gov.br/licitacoes/licitacoes-2026/pregao-eletronico-2026/",
+    "https://alertalicitacao.com.br/!municipios/3300951"
+   ],
+   "observacoes": "Abrir um edital de 2026 no navegador para ver a plataforma.",
+   "populacao": 8741,
+   "regiao": "Centro-Sul"
+  },
+  {
+   "municipio": "Rio das Flores",
+   "plataforma_disputa": "Compras.gov.br",
+   "como_cadastrar": "Cadastro de fornecedores por formulário online, usado para cotações, dispensas e licitações. Para disputar, SICAF.",
+   "link_cadastro": "https://forms.gle/ySaoYJ2ezhnZsXRi9",
+   "contato": "licitacao@riodasflores.rj.gov.br · (24) 92004-4770",
+   "publica_pncp": "sim",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://www.riodasflores.rj.gov.br",
+    "https://alertalicitacao.com.br/!licitacao/DOU-0005f3152dd809183a7e"
+   ],
+   "observacoes": "Setor de Licitação na Rua Cel. Eurico de Castro, 14, Centro.",
+   "populacao": 8954,
+   "regiao": "Médio Paraíba"
+  },
+  {
+   "municipio": "Varre-Sai",
+   "plataforma_disputa": "Portal de Compras Públicas (pregões e dispensas eletrônicas)",
+   "como_cadastrar": "CRC municipal não encontrado. Cadastro no Portal de Compras Públicas, que vale para pregões e dispensas.",
+   "link_cadastro": "https://www.portaldecompraspublicas.com.br",
+   "contato": "não encontrado",
+   "publica_pncp": "sim",
+   "camara_municipal": "Publica no PNCP.",
+   "fontes": [
+    "https://www.portaldecompraspublicas.com.br/processos/RJ/Prefeitura-Municipal-de-Varre-Sai-4519/RPE-30-2026-2026-499386",
+    "https://pncp.gov.br/api/consulta/v1/orgaos/39217831000155/compras/2026/121"
+   ],
+   "observacoes": "Cerca de 40 pregões eletrônicos em 2026.",
+   "populacao": 10207,
+   "regiao": "Noroeste"
+  },
+  {
+   "municipio": "Santa Maria Madalena",
+   "plataforma_disputa": "Compras.gov.br (UASG 985891)",
+   "como_cadastrar": "Para disputar, SICAF e Compras.gov.br. O site tem página de Cadastro de Fornecedores, mas não abriu na pesquisa; forma e documentos não confirmados.",
+   "link_cadastro": "https://pmsmm.rj.gov.br/cadastro",
+   "contato": "setordecompras@pmsmm.rj.gov.br · (22) 2561-1562",
+   "publica_pncp": "sim",
+   "camara_municipal": "não pesquisado",
+   "fontes": [
+    "https://alertalicitacao.com.br/!licitacao/DOU-4f709184846e3907e4c2",
+    "https://pmsmm.rj.gov.br/"
+   ],
+   "observacoes": "Teve dispensa de equipamentos e materiais de informática para a Saúde em 2025.",
+   "populacao": 10232,
+   "regiao": "Serrana"
+  },
+  {
+   "municipio": "Trajano de Moraes",
+   "plataforma_disputa": "Compras.gov.br (UASG 985917)",
+   "como_cadastrar": "Para disputar, SICAF e Compras.gov.br. CRC próprio não encontrado.",
+   "link_cadastro": "https://trajanodemoraes.rj.gov.br/licitacoes",
+   "contato": "licitacao@trajanodemoraes.rj.gov.br",
+   "publica_pncp": "sim",
+   "camara_municipal": "Publica no PNCP e usa o Compras.gov.br.",
+   "fontes": [
+    "https://trajanodemoraes.rj.gov.br/licitacoes",
+    "https://pncp.gov.br/api/consulta/v1/orgaos/29115441000110/compras/2026/42"
+   ],
+   "observacoes": "",
+   "populacao": 10302,
+   "regiao": "Serrana"
+  },
+  {
+   "municipio": "Duas Barras",
+   "plataforma_disputa": "Não confirmado em 2025-2026 (usou BLL Compras em 2021-2022); avisos de 2026 não dizem se é eletrônico ou presencial",
+   "como_cadastrar": "não encontrado",
+   "link_cadastro": "https://duasbarras.rj.gov.br/",
+   "contato": "Praça Gov. Portela, 7, Centro (9h às 17h)",
+   "publica_pncp": "não confirmado",
+   "camara_municipal": "Faz dispensa com disputa pelo Compras.gov.br e publica no PNCP.",
+   "fontes": [
+    "https://alertalicitacao.com.br/!municipios/3301603",
+    "https://alertalicitacao.com.br/!licitacao/MN-3301603-13-442026"
+   ],
+   "observacoes": "Fez o Pregão 44/2026 de equipamentos de informática para a Assistência Social. Ligar e pedir para entrar no cadastro.",
+   "populacao": 10980,
+   "regiao": "Serrana"
+  },
+  {
+   "municipio": "Aperibé",
+   "plataforma_disputa": "BLL Compras (prefeitura e fundos de Saúde, Assistência Social e Educação)",
+   "como_cadastrar": "Cadastro na BLL Compras. Decreto 1067/2023 adota o cadastro unificado do PNCP; não há CRC municipal próprio.",
+   "link_cadastro": "https://bllcompras.com/Home/Login",
+   "contato": "licitacaoaperibe@gmail.com · (22) 3864-1129",
+   "publica_pncp": "sim",
+   "camara_municipal": "não pesquisado",
+   "fontes": [
+    "https://www.aperibe.rj.gov.br/licitacao",
+    "https://www.aperibe.rj.gov.br/licitacao/abrir/484/edital/edital.pdf"
+   ],
+   "observacoes": "Com cadastro na BLL, a ISAKMP disputa os certames da prefeitura e dos três fundos.",
+   "populacao": 11034,
+   "regiao": "Noroeste"
+  },
+  {
+   "municipio": "Areal",
+   "plataforma_disputa": "Pregão presencial em 2026, sem plataforma eletrônica",
+   "como_cadastrar": "não encontrado",
+   "link_cadastro": "não encontrado",
+   "contato": "não encontrado",
+   "publica_pncp": "sim",
+   "camara_municipal": "não pesquisado",
+   "fontes": [
+    "https://alertalicitacao.com.br/!municipios/3300225",
+    "https://alertalicitacao.com.br/!licitacao/MN-3300225-8-132026"
+   ],
+   "observacoes": "Fez o PP 13/2026 de geoprocessamento com SaaS. Sessões presenciais exigem ir com a habilitação.",
+   "populacao": 11828,
+   "regiao": "Centro-Sul"
+  },
+  {
+   "municipio": "Engenheiro Paulo de Frontin",
+   "plataforma_disputa": "Prefeitura: só pregão presencial em 2025-2026",
+   "como_cadastrar": "CRC não encontrado. Edital retirado no Setor de Licitações (Praça Roger Malhardes, 75, anexo, 10h às 16h) ou no portal de transparência.",
+   "link_cadastro": "https://transparencia.betha.cloud/#/SE0RO8pH3Ex6Ujq7fenukA==/consulta/43878",
+   "contato": "licitacao@paulodefrontin.rj.gov.br",
+   "publica_pncp": "sim",
+   "camara_municipal": "Usa a Licitanet para pregão e dispensas eletrônicas e publica no PNCP.",
+   "fontes": [
+    "https://alertalicitacao.com.br/!licitacao/DOU-2ace15212684acbf7271",
+    "https://www.paulodefrontin.rj.gov.br/"
+   ],
+   "observacoes": "",
+   "populacao": 12242,
+   "regiao": "Centro-Sul"
+  },
+  {
+   "municipio": "Cardoso Moreira",
+   "plataforma_disputa": "Pregões presenciais; muitas dispensas de valor baixo publicadas no portal de transparência",
+   "como_cadastrar": "não encontrado",
+   "link_cadastro": "https://transparencia.cardosomoreira.rj.gov.br/transparencia/Default.aspx?AcessoIndividual=lnkLicitacoes",
+   "contato": "(22) 2785-1221 · Rua Sebastião Zaquieu, 84/92",
+   "publica_pncp": "sim",
+   "camara_municipal": "não pesquisado",
+   "fontes": [
+    "https://transparencia.cardosomoreira.rj.gov.br/transparencia/Default.aspx?AcessoIndividual=lnkLicitacoes",
+    "https://alertalicitacao.com.br/!municipios/3301157"
+   ],
+   "observacoes": "Contratou internet por dispensa em 2026. Ligar e pedir para entrar na lista de fornecedores consultados.",
+   "populacao": 12958,
+   "regiao": "Norte"
+  },
+  {
+   "municipio": "Quatis",
+   "plataforma_disputa": "BLL Compras para pregão eletrônico; também pregão e concorrência presenciais",
+   "como_cadastrar": "Procedimento de CRC não encontrado. Para disputar, cadastro na BLL Compras. Editais no portal de transparência.",
+   "link_cadastro": "https://bllcompras.com",
+   "contato": "0800 2021 033 · Rua Profa. Ana Ferreira de Oliveira, 47, Bondarowsky",
+   "publica_pncp": "não confirmado",
+   "camara_municipal": "não pesquisado",
+   "fontes": [
+    "https://alertalicitacao.com.br/!licitacao/BLL-3304128-d6ee-262026",
+    "http://transparencia.quatis.rj.gov.br/"
+   ],
+   "observacoes": "Contato é o geral da prefeitura.",
+   "populacao": 13682,
+   "regiao": "Médio Paraíba"
+  },
+  {
+   "municipio": "Carapebus",
+   "plataforma_disputa": "Compras.gov.br (UASG 980772)",
+   "como_cadastrar": "Procedimento de CRC não encontrado. Para disputar, SICAF e Compras.gov.br.",
+   "link_cadastro": "não encontrado",
+   "contato": "gerco@carapebus.rj.gov.br",
+   "publica_pncp": "sim",
+   "camara_municipal": "não pesquisado",
+   "fontes": [
+    "https://pncp.gov.br/app/editais/01609497000102/2026/19",
+    "https://alertalicitacao.com.br/!licitacao/CN-980772-5-910012026"
+   ],
+   "observacoes": "E-mail usado para receber cotações em dispensa de 2024; confirmar se continua ativo.",
+   "populacao": 13847,
+   "regiao": "Norte"
+  },
+  {
+   "municipio": "Italva",
+   "plataforma_disputa": "Só pregão presencial, concorrência presencial e dispensas encontrados em 2025-2026",
+   "como_cadastrar": "não encontrado",
+   "link_cadastro": "https://www.italva.rj.gov.br/site/licitacoes",
+   "contato": "não encontrado",
+   "publica_pncp": "não confirmado",
+   "camara_municipal": "não pesquisado",
+   "fontes": [
+    "https://alertalicitacao.com.br/!municipios/3302056",
+    "https://www.italva.rj.gov.br/site/licitacoes"
+   ],
+   "observacoes": "Ligar para a prefeitura e perguntar como fazer o CRC. Como tudo é presencial, o cadastro local pesa mais aqui.",
+   "populacao": 14073,
+   "regiao": "Noroeste"
+  },
+  {
+   "municipio": "Cambuci",
+   "plataforma_disputa": "Pregão presencial (avisos em sistemasplug.com.br/licitacao/cambuci); inclui objetos de TI, como o PP 007/2026 de manutenção de TI, rede cabeada e backup",
+   "como_cadastrar": "Procedimento de CRC não encontrado. Edital completo retirado no Setor de Licitações e Contratos (presencial).",
+   "link_cadastro": "https://sistemasplug.com.br/licitacao/cambuci/",
+   "contato": "Licitações: (22) 2767-2581 · Praça da Bandeira, 120, Centro",
+   "publica_pncp": "não confirmado",
+   "camara_municipal": "não pesquisado",
+   "fontes": [
+    "https://sistemasplug.com.br/licitacao/cambuci/visualizar.php?p=381",
+    "https://www.prefeituradecambuci.rj.gov.br"
+   ],
+   "observacoes": "Já contrata serviços de TI e rede: candidato prioritário para a ISAKMP.",
+   "populacao": 14616,
+   "regiao": "Noroeste"
+  },
+  {
+   "municipio": "Natividade",
+   "plataforma_disputa": "Compras.gov.br (UASG 985861); também muitos pregões presenciais",
+   "como_cadastrar": "Procedimento de CRC não encontrado. Para disputar o eletrônico, SICAF e Compras.gov.br.",
+   "link_cadastro": "https://www.natividade.rj.gov.br/transparencia/licitacoes",
+   "contato": "não encontrado",
+   "publica_pncp": "sim",
+   "camara_municipal": "não pesquisado",
+   "fontes": [
+    "https://pncp.gov.br/app/editais/28920304000196/2026/13",
+    "https://alertalicitacao.com.br/!licitacao/CN-985861-5-900062024"
+   ],
+   "observacoes": "",
+   "populacao": 15074,
+   "regiao": "Noroeste"
+  },
+  {
+   "municipio": "Sumidouro",
+   "plataforma_disputa": "Licitanet (quase tudo por pregão eletrônico); avisos em licitacao.sumidouro.rj.gov.br",
+   "como_cadastrar": "CRC com entrega de documentos no setor de cadastro da prefeitura (validade de 1 ano). Lista de documentos publicada no site. Para disputar, cadastro no Licitanet.",
+   "link_cadastro": "https://www.sumidouro.rj.gov.br/Licitacao/download/DOCUMENTOS-PARA-CRC.doc",
+   "contato": "Compras: (22) 2531-1604 · R. Alfredo Chaves, 39, Centro (atendimento 9h às 14h)",
+   "publica_pncp": "sim",
+   "camara_municipal": "não pesquisado",
+   "fontes": [
+    "https://sumidouro.rj.gov.br/licitacao/",
+    "https://www.sumidouro.rj.gov.br/Licitacao/download/DOCUMENTOS-PARA-CRC.doc"
+   ],
+   "observacoes": "Modelo de CRC ainda cita a Lei 8.666; confirmar a lista atual por telefone.",
+   "populacao": 15206,
+   "regiao": "Serrana"
+  },
+  {
+   "municipio": "Carmo",
+   "plataforma_disputa": "Licitanet (editais 2026 no PNCP com a tag [LICITANET]); ainda faz pregões presenciais e concorrências",
+   "como_cadastrar": "Procedimento de CRC da prefeitura não encontrado. Para disputar, cadastro no Licitanet.",
+   "link_cadastro": "https://licitanet.com.br",
+   "contato": "não encontrado (sede: Praça Princesa Isabel, 91, Centro, CEP 28640-000)",
+   "publica_pncp": "sim",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://alertalicitacao.com.br/!municipios/3301207",
+    "https://pncp.gov.br/app/editais/29128741000134/2026/32"
+   ],
+   "observacoes": "Site oficial bloqueia leitura automática; dados vindos de avisos e do PNCP.",
+   "populacao": 17198,
+   "regiao": "Serrana"
+  },
+  {
+   "municipio": "Porciúncula",
+   "plataforma_disputa": "Licitanet; também pregões presenciais e concorrências",
+   "como_cadastrar": "Procedimento de CRC não encontrado. Para disputar, cadastro no Licitanet. Editais em www.porciuncula.rj.gov.br.",
+   "link_cadastro": "https://licitanet.com.br",
+   "contato": "pregao@porciuncula.rj.gov.br · (22) 99869-5470",
+   "publica_pncp": "sim",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://alertalicitacao.com.br/!licitacao/DOU-a05e4d89369f6541b2ec",
+    "https://pncp.gov.br/api/consulta/v1/orgaos/28920999000106/compras/2026/14"
+   ],
+   "observacoes": "",
+   "populacao": 17288,
+   "regiao": "Noroeste"
+  },
+  {
+   "municipio": "Rio Claro",
+   "plataforma_disputa": "BLL Compras",
+   "como_cadastrar": "Cadastro Simplificado de Fornecedor online (formulário no site da prefeitura); para disputar, cadastro na BLL Compras.",
+   "link_cadastro": "https://docs.google.com/forms/d/e/1FAIpQLSc1Jag8UfGyTN0RAq7xjVcf8oJ8PSz5bbfgD0-vjkOyFG2C9w/viewform",
+   "contato": "admin.pmrc@rioclaro.rj.gov.br · (24) 3332-1717",
+   "publica_pncp": "sim",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://www.rioclaro.rj.gov.br",
+    "https://alertalicitacao.com.br/!licitacao/BLL-3304409-48d1-012026"
+   ],
+   "observacoes": "Contato geral da administração; e-mail específico de licitações não encontrado.",
+   "populacao": 17401,
+   "regiao": "Médio Paraíba"
+  },
+  {
+   "municipio": "Mendes",
+   "plataforma_disputa": "Compras.gov.br (UASG 985855)",
+   "como_cadastrar": "Procedimento de CRC não encontrado. Para disputar, SICAF e acesso ao Compras.gov.br.",
+   "link_cadastro": "https://www.mendes.rj.gov.br/Licitacoes/index.php",
+   "contato": "cplmendes@hotmail.com · (24) 3199-0209",
+   "publica_pncp": "sim",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://www.mendes.rj.gov.br/Licitacoes/index.php",
+    "https://pncp.gov.br/api/consulta/v1/orgaos/28580694000100/compras/2026/4"
+   ],
+   "observacoes": "Telefone é o contato geral da prefeitura.",
+   "populacao": 17502,
+   "regiao": "Centro-Sul"
+  },
+  {
+   "municipio": "Sapucaia",
+   "plataforma_disputa": "Licitanet",
+   "como_cadastrar": "Procedimento de CRC não encontrado. Para disputar, cadastro no Licitanet.",
+   "link_cadastro": "https://licitanet.com.br",
+   "contato": "licitacao@sapucaia.rj.gov.br · (24) 2040-4008",
+   "publica_pncp": "sim",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://www.sapucaia.rj.gov.br",
+    "https://pncp.gov.br/api/consulta/v1/orgaos/29138393000186/compras/2026/29"
+   ],
+   "observacoes": "",
+   "populacao": 17729,
+   "regiao": "Centro-Sul"
+  },
+  {
+   "municipio": "Cantagalo",
+   "plataforma_disputa": "Compras.gov.br (UASG 985821)",
+   "como_cadastrar": "CRC presencial no Setor de Licitação: requerimento em papel timbrado com toda a documentação de uma vez (contrato social, CNPJ, inscrições, certidões, balanço, falência, enquadramento ME/EPP na JUCERJA, documentos dos sócios). Para disputar, SICAF.",
+   "link_cadastro": "https://www.cantagalo.rj.gov.br",
+   "contato": "(22) 2555-0909 · Praça Miguel de Carvalho, 65, Centro",
+   "publica_pncp": "sim",
+   "camara_municipal": "não encontrado",
+   "fontes": [
+    "https://www.cantagalo.rj.gov.br",
+    "https://pncp.gov.br/api/consulta/v1/orgaos/28645794000160/compras/2026/52"
+   ],
+   "observacoes": "Roteiro de CRC é de 2021; confirmar por telefone se ainda vale.",
+   "populacao": 19390,
+   "regiao": "Serrana"
+  }
+ ]
+}

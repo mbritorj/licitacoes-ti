@@ -1,0 +1,293 @@
+{
+  "_comentario": "Configuração do robô. Termos são expressões regulares aplicadas ao objeto da licitação já em minúsculas e sem acentos. Peso 3 = termo forte (sozinho já qualifica); peso 1 ou 2 = termo fraco (precisa somar com outro). Uma licitação entra no painel quando a soma dos pesos chega em pontuacao_minima. Ajuste de 18/10/2026 após a primeira coleta real: 'suporte técnico' e 'software' sozinhos passaram a peso 2 e entraram exclusões para relógio de ponto, painel de LED, raio-X, áudio e vídeo, rastreamento de veículos e impressão.",
+  "ufs": [
+    "RJ",
+    "SP",
+    "MG",
+    "ES"
+  ],
+  "modalidades": {
+    "4": "Concorrência Eletrônica",
+    "6": "Pregão Eletrônico",
+    "7": "Pregão Presencial",
+    "8": "Dispensa de Licitação"
+  },
+  "dias_a_frente": 365,
+  "pontuacao_minima": 3,
+  "valor_limite_me_epp": 80000,
+  "pausa_entre_chamadas_seg": 5,
+  "buscar_beneficio_me_epp": true,
+  "categorias": {
+    "Serviço": [
+      [
+        "suporte tecnico",
+        2
+      ],
+      [
+        "manutencao (preventiva|corretiva|preventiva e corretiva)?\\s*(de|dos|da|em)?\\s*(equipamentos de )?(informatica|rede|redes|ti|tic|switch|switches|servidores|ativos|infraestrutura de ti|equipamentos de rede)",
+        3
+      ],
+      [
+        "cabeamento estruturado",
+        3
+      ],
+      [
+        "service ?desk|help ?desk|central de servicos de ti",
+        3
+      ],
+      [
+        "infraestrutura de (ti|tic|rede|redes|tecnologia)",
+        3
+      ],
+      [
+        "rede (logica|de dados|corporativa|sem fio|lan|wan|local)",
+        3
+      ],
+      [
+        "redes? de computadores",
+        3
+      ],
+      [
+        "(gerenciamento|monitoramento|gerencia) de (rede|redes|infraestrutura)",
+        3
+      ],
+      [
+        "seguranca (da informacao|cibernetica)|ciberseguranca",
+        3
+      ],
+      [
+        "data ?center|sala cofre|centro de dados",
+        3
+      ],
+      [
+        "outsourcing de (ti|infraestrutura)|sustentacao (de|da|do) (infraestrutura|ambiente)",
+        3
+      ],
+      [
+        "operacao assistida",
+        2
+      ],
+      [
+        "migracao de (rede|switch|servidores|ambiente|dados)",
+        3
+      ],
+      [
+        "configuracao de (equipamentos|switches|rede|roteadores|firewall)",
+        3
+      ],
+      [
+        "telefonia ip|\\bvoip\\b|telefonia (em nuvem|voip)",
+        3
+      ],
+      [
+        "links? de (internet|dados|comunicacao)|acesso (dedicado )?a internet|conectividade",
+        3
+      ],
+      [
+        "\\bsd-?wan\\b|\\bmpls\\b",
+        3
+      ],
+      [
+        "servicos? (especializados? )?de (ti|tic|informatica|tecnologia da informacao)",
+        3
+      ],
+      [
+        "fabrica de software|desenvolvimento de (sistemas?|software)",
+        3
+      ],
+      [
+        "fibra optica",
+        2
+      ],
+      [
+        "assistencia tecnica",
+        1
+      ],
+      [
+        "instalacao e configuracao",
+        1
+      ],
+      [
+        "tecnologia da informacao|\\btic\\b|\\bti\\b|informatica|sistemas? (informatizados?|integrados?|de gestao)",
+        2
+      ]
+    ],
+    "Equipamento": [
+      [
+        "\\bswitch(es)?\\b",
+        3
+      ],
+      [
+        "\\broteador(es)?\\b",
+        3
+      ],
+      [
+        "\\bfirewalls?\\b|\\butm\\b|\\bngfw\\b",
+        3
+      ],
+      [
+        "access ?points?|pontos? de acesso|controladora (wireless|wlan)|\\bwireless\\b|\\bwi-?fi\\b",
+        3
+      ],
+      [
+        "servidor(es)? (de rede|rack|blade|fisicos?|tipo|x86|de dados|de virtualizacao|de processamento|de aplicacao|de banco de dados|para)",
+        3
+      ],
+      [
+        "\\bstorage\\b|armazenamento de dados|subsistema de armazenamento|hiperconverg",
+        3
+      ],
+      [
+        "\\bappliances?\\b",
+        2
+      ],
+      [
+        "transceptor(es)?|transceivers?|modulos? (sfp|optico)|\\bgbic\\b",
+        3
+      ],
+      [
+        "materia(l|is) (permanentes? )?de (informatica|tic|ti|rede|redes)",
+        3
+      ],
+      [
+        "equipamentos? (de|para) (informatica|ti|tic|rede|redes|tecnologia da informacao|conectividade)",
+        3
+      ],
+      [
+        "solucao de (rede|redes|seguranca|backup|armazenamento|conectividade|wi-?fi)",
+        3
+      ],
+      [
+        "(micro)?computador(es)?|\\bnotebooks?\\b|\\bdesktops?\\b|estacoes de trabalho|\\bthin client",
+        3
+      ],
+      [
+        "telefones? ip|aparelhos? (telefonicos? )?ip|central telefonica|\\bpabx\\b",
+        3
+      ],
+      [
+        "\\bnobreaks?\\b|\\bups\\b",
+        1
+      ],
+      [
+        "\\brack(s)?\\b",
+        1
+      ],
+      [
+        "\\btablets?\\b",
+        2
+      ],
+      [
+        "impressoras?|outsourcing de impressao",
+        2
+      ]
+    ],
+    "Licença/Software": [
+      [
+        "licencas?.{0,40}softwares?|softwares?.{0,40}licenc|(aquisicao|assinaturas?|fornecimento) de softwares?|licenca da plataforma|licencas? perpetuas?",
+        3
+      ],
+      [
+        "licencas? (de uso )?(de |do |dos |para )?(software|sistema|uso|programa)",
+        3
+      ],
+      [
+        "licenciamento",
+        3
+      ],
+      [
+        "subscric(ao|oes)",
+        3
+      ],
+      [
+        "\\bsoftwares?\\b",
+        2
+      ],
+      [
+        "antivirus|\\bendpoint\\b|\\bedr\\b|\\bxdr\\b",
+        3
+      ],
+      [
+        "microsoft|office 365|microsoft 365|\\bm365\\b|windows server|\\bwindows\\b",
+        3
+      ],
+      [
+        "vmware|veeam|commvault|nutanix|red hat|proxmox|citrix",
+        3
+      ],
+      [
+        "\\bbackup\\b",
+        3
+      ],
+      [
+        "computacao em nuvem|\\bnuvem\\b|\\bcloud\\b|\\bsaas\\b|\\biaas\\b",
+        3
+      ],
+      [
+        "google workspace|\\badobe\\b|autocad|autodesk",
+        3
+      ],
+      [
+        "sistema (integrado )?de gestao|locacao de sistema",
+        2
+      ]
+    ]
+  },
+  "fabricantes_destaque": [
+    "cisco",
+    "meraki",
+    "nokia",
+    "huawei",
+    "zyxel",
+    "fortinet",
+    "fortigate",
+    "aruba",
+    "juniper"
+  ],
+  "exclusoes": [
+    [
+      "medicament|hospitalar|odontolog|laboratori(al|o) clinic",
+      -5
+    ],
+    [
+      "generos alimenticios|alimenta(cao|cios)|merenda|refeic",
+      -5
+    ],
+    [
+      "combustive|\\bpneus?\\b|pecas automotivas|veiculos? (automotores|leves|pesados)",
+      -5
+    ],
+    [
+      "pavimenta|esgoto|drenagem|abastecimento de agua|rede de agua|saneamento",
+      -5
+    ],
+    [
+      "iluminacao publica|rede eletrica|rede de distribuicao de energia|subestacao de energia",
+      -4
+    ],
+    [
+      "uniformes?|material de limpeza|material de expediente|mobiliario",
+      -4
+    ],
+    [
+      "capacitacao (de|dos) servidores|servidores (publicos|municipais|estaduais|efetivos)",
+      -6
+    ],
+    [
+      "rede credenciada|rede de atendimento|rede de farmacias",
+      -4
+    ],
+    [
+      "elevador|ar condicionado|climatizacao|refrigeracao",
+      -2
+    ],
+    [
+      "transporte escolar|locacao de veiculos",
+      -5
+    ],
+    [
+      "audio e video|audiovisual|painel (eletronico )?de led|conteineres?|radiocomunicad|radiocomunicacao|rastreamento de veiculos|relogios? de ponto|sistemas eletricos|raio-?x|radiologic|outsourcing de impressao|impressao corporativa|catracas?",
+      -3
+    ]
+  ]
+}
