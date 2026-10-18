@@ -1,0 +1,44 @@
+name: Robô de licitações
+
+on:
+  schedule:
+    - cron: "30 9 * * *"
+    - cron: "30 15 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: robo-licitacoes
+  cancel-in-progress: false
+
+jobs:
+  coleta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Testar a classificação
+        run: python tests/teste_classificacao.py
+
+      - name: Coletar licitações no PNCP
+        run: python robo.py
+
+      - name: Publicar resultado
+        run: |
+          git config user.name "robo-licitacoes"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data.json
+          if git diff --cached --quiet; then
+            echo "Sem mudanças."
+          else
+            git commit -m "Atualiza licitações $(TZ=America/Sao_Paulo date '+%d/%m/%Y %H:%M')"
+            git pull --rebase
+            git push
+          fi
