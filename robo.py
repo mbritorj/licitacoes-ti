@@ -264,6 +264,7 @@ def montar_item(reg, cls, hoje_iso):
         "pontos": cls["pontos"],
         "me_epp_texto": me_texto,
         "beneficio": None,
+        "orcamento_sigiloso": None,
         "link_pncp": link_pncp,
         "link_origem": reg.get("linkSistemaOrigem"),
         "_cnpj": cnpj,
@@ -273,20 +274,24 @@ def montar_item(reg, cls, hoje_iso):
     }
 
 
-def buscar_beneficio(cliente, item):
-    """Lê os itens da contratação e resume o benefício de ME/EPP (LC 123)."""
+def consultar_itens(cliente, item):
+    """Lê os itens da contratação no PNCP e resume:
+    - benefício de ME/EPP (LC 123): "Exclusiva ME/EPP", "Parcial ME/EPP" ou "Ampla";
+    - orçamento sigiloso (art. 24 da Lei 14.133): "total", "parcial" ou "nao".
+    Devolve (beneficio, sigiloso); None em cada um quando não foi possível ler."""
     if not (item.get("_cnpj") and item.get("_ano") and item.get("_seq")):
-        return None
+        return None, None
     url = API_ITENS.format(cnpj=item["_cnpj"], ano=item["_ano"], seq=item["_seq"])
     try:
         resp = cliente.get(url, {"pagina": 1, "tamanhoPagina": 500})
     except Exception as e:
         log(f"  itens de {item['id']}: {e}")
-        return None
+        return None, None
     itens = resp.get("data") if isinstance(resp, dict) else resp
     if not itens:
-        return None
+        return None, None
     exclusivos = cota = outros = 0
+    sig_sim = sig_nao = 0
     for it in itens:
         nome = normalizar(it.get("tipoBeneficioNome") or "")
         cod = it.get("tipoBeneficioId", it.get("tipoBeneficio"))
@@ -298,11 +303,18 @@ def buscar_beneficio(cliente, item):
             cota += 1
         else:
             outros += 1
+        if it.get("orcamentoSigiloso") is True:
+            sig_sim += 1
+        else:
+            sig_nao += 1
     if exclusivos and not (cota or outros):
-        return "Exclusiva ME/EPP"
-    if exclusivos or cota:
-        return "Parcial ME/EPP"
-    return "Ampla"
+        beneficio = "Exclusiva ME/EPP"
+    elif exclusivos or cota:
+        beneficio = "Parcial ME/EPP"
+    else:
+        beneficio = "Ampla"
+    sigiloso = "total" if sig_sim and not sig_nao else ("parcial" if sig_sim else "nao")
+    return beneficio, sigiloso
 
 
 # --------------------------------------------------------------------------
@@ -365,6 +377,7 @@ def main():
         if antigo:
             item["primeiro_visto"] = antigo.get("primeiro_visto", hoje_iso)
             item["beneficio"] = antigo.get("beneficio")
+            item["orcamento_sigiloso"] = antigo.get("orcamento_sigiloso")
         itens[item["id"]] = item
 
     # combinações que falharam nesta rodada: preserva o que já se conhecia delas
@@ -379,10 +392,17 @@ def main():
 
     # benefício ME/EPP: só para quem ainda não tem
     if cfg.get("buscar_beneficio_me_epp", True) and not args.offline:
-        pendentes = [i for i in itens.values() if i.get("beneficio") is None]
-        log(f"Consultando benefício ME/EPP de {len(pendentes)} contratações")
+        # novas contratações, e as antigas com valor zerado ainda sem a informação de sigilo
+        pendentes = [i for i in itens.values()
+                     if i.get("beneficio") is None
+                     or (i.get("orcamento_sigiloso") is None and not i.get("valor"))]
+        log(f"Consultando itens (ME/EPP e orçamento sigiloso) de {len(pendentes)} contratações")
         for n, item in enumerate(pendentes, 1):
-            item["beneficio"] = buscar_beneficio(cliente, item)
+            beneficio, sigiloso = consultar_itens(cliente, item)
+            if beneficio is not None:
+                item["beneficio"] = beneficio
+            if sigiloso is not None:
+                item["orcamento_sigiloso"] = sigiloso
             if n % 25 == 0:
                 log(f"  {n}/{len(pendentes)}")
 
