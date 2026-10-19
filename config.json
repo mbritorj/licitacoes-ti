@@ -192,7 +192,7 @@
         3
       ],
       [
-        "licenciamento",
+        "licenciamento.{0,40}(softwares?|sistemas?|programas?|de uso)",
         3
       ],
       [
@@ -212,7 +212,7 @@
         3
       ],
       [
-        "vmware|veeam|commvault|nutanix|red hat|proxmox|citrix",
+        "vmware|veeam|commvault|nutanix|red hat|proxmox|citrix|veritas|netbac?h?kup|netbachup|enterprise vault|oracle|sql server",
         3
       ],
       [
@@ -230,6 +230,10 @@
       [
         "sistema (integrado )?de gestao|locacao de sistema",
         2
+      ],
+      [
+        "licenciamento",
+        1
       ]
     ]
   },
@@ -288,6 +292,10 @@
     [
       "audio e video|audiovisual|painel (eletronico )?de led|conteineres?|radiocomunicad|radiocomunicacao|rastreamento de veiculos|relogios? de ponto|sistemas eletricos|raio-?x|radiologic|outsourcing de impressao|impressao corporativa|catracas?",
       -3
+    ],
+    [
+      "veiculos? automotor|emplacamento|licenciamento ambiental|impacto ambiental|compensacao florestal",
+      -4
     ]
   ]
 }
