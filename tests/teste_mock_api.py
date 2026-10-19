@@ -6,6 +6,9 @@ from urllib.parse import urlparse, parse_qs
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import robo
 amostra = json.load(open(Path(__file__).parent / "amostra_pncp.json"))["data"]
+from datetime import datetime, timedelta
+for _k, _r in enumerate(amostra):  # datas sempre no futuro, para o teste não envelhecer
+    _r["dataEncerramentoProposta"] = (datetime.now() + timedelta(days=2 + _k)).strftime("%Y-%m-%dT10:00:00")
 cont = {"429": 0}
 class H(BaseHTTPRequestHandler):
     def log_message(self, *a): pass
@@ -14,7 +17,8 @@ class H(BaseHTTPRequestHandler):
         if u.path.endswith("/itens"):
             seq = int(u.path.split("/")[-2])
             nome = "Participação exclusiva para ME/EPP" if seq % 3 == 0 else "Sem benefício"
-            body = [{"numeroItem": 1, "tipoBeneficioId": 1 if seq % 3 == 0 else 4, "tipoBeneficioNome": nome}]
+            body = [{"numeroItem": 1, "tipoBeneficio": 1 if seq % 3 == 0 else 5, "tipoBeneficioNome": nome,
+                     "orcamentoSigiloso": seq % 4 == 0, "valorUnitarioEstimado": 0 if seq % 4 == 0 else 10}]
             return self._json(body)
         uf, mod, pag = q["uf"][0], q["codigoModalidadeContratacao"][0], int(q["pagina"][0])
         assert "dataFinal" in q
@@ -45,4 +49,7 @@ print({i["id"][-11:]: i["beneficio"] for i in d["itens"]})
 assert rc == 0 and e["relevantes"] == 10 and e["registros_lidos"] == 12, "contagem"
 assert e["combinacoes_falha"] == ["ES-7"], "falha ES-7 esperada"
 assert all(i["beneficio"] in ("Exclusiva ME/EPP", "Ampla") for i in d["itens"])
+sig = {i["id"]: i["orcamento_sigiloso"] for i in d["itens"]}
+assert all(v in ("total", "nao") for v in sig.values()), sig
+assert any(v == "total" for v in sig.values())
 print("MOCK OK")

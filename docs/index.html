@@ -105,6 +105,7 @@ input[type=search]{flex:1;min-width:200px}
 .pcard .src a{font-weight:400;color:var(--ink-3)}
 .pcard .src{font-size:12px;color:var(--ink-3)}
 .nf{color:var(--ink-3);font-size:12.5px}
+.sig{font-weight:600;font-size:13px;color:var(--violet);white-space:nowrap}
 .empty{padding:40px 16px;text-align:center;color:var(--ink-2);background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius)}
 details.err{font-size:12.5px;color:var(--ink-2);margin-top:4px}
 details.err pre{white-space:pre-wrap;background:var(--surface-2);padding:8px;border-radius:8px;max-height:180px;overflow:auto}
@@ -204,7 +205,15 @@ const ALIAS = {"trajano de morais":"trajano de moraes", "comendador levy gaspari
 const chaveMun = s => { const n = norm(s).replace(/[^a-z ]/g," ").replace(/\s+/g," ").trim(); return ALIAS[n] || n; };
 
 const $ = id => document.getElementById(id);
-const fmtBRL = v => (v==null||isNaN(v)) ? "valor sigiloso/não informado" : Number(v).toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0});
+const fmtBRL = v => Number(v).toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0});
+// Orçamento: o PNCP marca cada item com orcamentoSigiloso; o robô resume em "total", "parcial" ou "nao".
+function valorTxt(i){
+  if(i.orcamento_sigiloso==="total") return '<span class="sig" title="Orçamento sigiloso (art. 24 da Lei 14.133/2021): o valor estimado só é divulgado depois da fase de lances">Orçamento sigiloso</span>';
+  if(i.valor==null || !(Number(i.valor)>0)) return '<span class="sig">Valor não informado</span>';
+  const v = fmtBRL(i.valor);
+  return i.orcamento_sigiloso==="parcial" ? `${v} <span class="sig" title="Parte dos itens tem orçamento sigiloso; o total mostra só os itens com valor divulgado">+ itens sigilosos</span>` : v;
+}
+const valorNum = i => (i.orcamento_sigiloso==="total" || !(Number(i.valor)>0)) ? null : Number(i.valor);
 const parseD = s => s ? new Date(s.length<=10 ? s+"T00:00:00" : s) : null;
 const fmtD = d => d ? d.toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",year:"2-digit",hour:"2-digit",minute:"2-digit"}) : "–";
 const norm = s => (s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
@@ -228,7 +237,8 @@ function enriquecer(i){
   const enc = parseD(i.encerramento);
   const dias = enc ? (enc - Date.now())/864e5 : null;
   const limite = DATA.valor_limite_me_epp || 80000;
-  const me = i.beneficio==="Exclusiva ME/EPP" || i.beneficio==="Parcial ME/EPP" || i.me_epp_texto || (i.valor!=null && i.valor>0 && i.valor<=limite);
+  const vn = valorNum(i);
+  const me = i.beneficio==="Exclusiva ME/EPP" || i.beneficio==="Parcial ME/EPP" || i.me_epp_texto || (vn!=null && vn<=limite);
   const hoje = DATA.atualizado_em ? DATA.atualizado_em.slice(0,10) : "";
   return {...i, _enc:enc, _dias:dias, _me:me, _novo:i.primeiro_visto===hoje,
     _aderente:(i.categorias||[]).includes("Serviço"),
@@ -256,7 +266,7 @@ function filtrar(){
     (!S.me || i._me) && (!S.novo || i._novo) && (!S.cnae || i._aderente) && (!S.peq || i._peq)
   );
   const k = {enc:(a,b)=>(a._enc||Infinity)-(b._enc||Infinity), pub:(a,b)=>(b.publicacao||"").localeCompare(a.publicacao||""),
-             valor_d:(a,b)=>(b.valor??-1)-(a.valor??-1), valor_a:(a,b)=>(a.valor??Infinity)-(b.valor??Infinity)}[S.ord];
+             valor_d:(a,b)=>(valorNum(b)??-1)-(valorNum(a)??-1), valor_a:(a,b)=>(valorNum(a)??Infinity)-(valorNum(b)??Infinity)}[S.ord];
   return r.sort(k);
 }
 
@@ -284,7 +294,7 @@ function card(i){
       <div class="links">${i.link_pncp?`<a href="${esc(i.link_pncp)}" target="_blank" rel="noopener">Ver no PNCP ↗</a>`:""}${i.link_origem?`<a href="${esc(i.link_origem)}" target="_blank" rel="noopener">Portal da disputa ↗</a>`:""}</div>
     </div>
     <div class="side">
-      <span class="valor">${fmtBRL(i.valor)}</span>
+      <span class="valor">${valorTxt(i)}</span>
       <span class="prazo${urg?" urg":""}">${prazoTxt(i)}</span>
       <span class="prazo">até ${fmtD(i._enc)}</span>
     </div>
@@ -303,7 +313,9 @@ function render(){
 function exportarCSV(){
   const cols = ["encerramento","uf","municipio","orgao","objeto","categorias","modalidade","numero","valor","beneficio","link_pncp","link_origem"];
   const linhas = [cols.join(";")].concat(ultima.map(i => cols.map(c => {
-    let v = i[c]; if(Array.isArray(v)) v = v.join(", "); v = v==null ? "" : String(v);
+    let v = i[c]; if(Array.isArray(v)) v = v.join(", ");
+    if(c==="valor") v = i.orcamento_sigiloso==="total" ? "sigiloso" : (valorNum(i)==null ? "" : valorNum(i));
+    v = v==null ? "" : String(v);
     return '"' + v.replace(/"/g,'""') + '"';
   }).join(";")));
   const blob = new Blob(["﻿"+linhas.join("\n")], {type:"text/csv;charset=utf-8"});
