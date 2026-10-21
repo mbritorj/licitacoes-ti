@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-10-21T11:57:45",
+ "atualizado_em": "2026-10-21T16:47:33",
  "ufs": [
   "RJ",
   "SP",
@@ -15,161 +15,16 @@
  "valor_limite_me_epp": 80000,
  "execucao": {
   "status": "ok",
-  "inicio": "2026-10-21T11:35:50",
-  "duracao_min": 21.9,
-  "chamadas_api": 241,
-  "registros_lidos": 9781,
-  "relevantes": 494,
+  "inicio": "2026-10-21T16:26:38",
+  "duracao_min": 20.9,
+  "chamadas_api": 230,
+  "registros_lidos": 10182,
+  "relevantes": 509,
   "combinacoes_ok": 16,
   "combinacoes_falha": [],
   "erros": []
  },
  "itens": [
-  {
-   "id": "20720165000145-1-000046/2026",
-   "objeto": "Fornecimento de 2 (dois) links de conexão à internet, por meio de link dedicado (IP Fixo) com velocidade de 1.000 Mbps, e meio de comunicação exclusivamente por cabo de fibra óptica, incluindo o serviço de instalação, configuração, ativação, suporte e manutenção, e o serviço agregado de segurança contra ataques do tipo negação de serviço (DDoS), além de fornecimento de todos os cabos, conectores, conversores, roteador e demais equipamentos necessários homologados pela Anatel.",
-   "orgao": "UBERLANDIA CAMARA MUNICIPAL",
-   "unidade": "CAMARA MUNICIPAL DE UBERLÂNDIA - MG",
-   "uf": "MG",
-   "municipio": "Uberlândia",
-   "modalidade": "Pregão - Eletrônico",
-   "modalidade_id": 6,
-   "modo_disputa": "Aberto-Fechado",
-   "numero": "9",
-   "processo": "17/2026",
-   "srp": false,
-   "valor": 0.0,
-   "abertura": "2026-10-01T08:00:00",
-   "encerramento": "2026-10-21T13:00:00",
-   "publicacao": "2026-09-30T15:31:09",
-   "categorias": [
-    "Equipamento"
-   ],
-   "termos": [
-    "fibra optica",
-    "roteador"
-   ],
-   "fabricantes": [],
-   "pontos": 5,
-   "me_epp_texto": false,
-   "beneficio": "Ampla",
-   "orcamento_sigiloso": "total",
-   "link_pncp": "https://pncp.gov.br/app/editais/20720165000145/2026/46",
-   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=92501005000092026",
-   "_cnpj": "20720165000145",
-   "_ano": 2026,
-   "_seq": 46,
-   "primeiro_visto": "2026-10-19"
-  },
-  {
-   "id": "20720165000145-1-000048/2026",
-   "objeto": "Contratação de empresa especializada para fornecimento de 2 (dois) links de conexão à internet, por meio de link dedicado (IP Fixo) com velocidade de 1.000 Mbps, e meio de comunicação exclusivamente por cabo de fibra óptica, incluindo o serviço de instalação, configuração, ativação, suporte e manutenção, e o serviço agregado de segurança contra ataques do tipo negação de serviço (DDoS), além de fornecimento de todos os cabos, conectores, conversores, roteador e demais equipamentos necessários homologados pela Anatel.",
-   "orgao": "UBERLANDIA CAMARA MUNICIPAL",
-   "unidade": "CAMARA MUNICIPAL DE UBERLÂNDIA - MG",
-   "uf": "MG",
-   "municipio": "Uberlândia",
-   "modalidade": "Pregão - Eletrônico",
-   "modalidade_id": 6,
-   "modo_disputa": "Aberto",
-   "numero": "PL-17",
-   "processo": "PL-17/2026 - PE - 90013",
-   "srp": false,
-   "valor": 0.0,
-   "abertura": "2026-10-21T13:00:00",
-   "encerramento": "2026-10-21T13:00:00",
-   "publicacao": "2026-10-01T09:56:31",
-   "categorias": [
-    "Equipamento"
-   ],
-   "termos": [
-    "fibra optica",
-    "roteador"
-   ],
-   "fabricantes": [],
-   "pontos": 5,
-   "me_epp_texto": false,
-   "beneficio": "Ampla",
-   "orcamento_sigiloso": "nao",
-   "link_pncp": "https://pncp.gov.br/app/editais/20720165000145/2026/48",
-   "link_origem": null,
-   "_cnpj": "20720165000145",
-   "_ano": 2026,
-   "_seq": 48,
-   "primeiro_visto": "2026-10-19"
-  },
-  {
-   "id": "28127603014802-1-000019/2026",
-   "objeto": "Contratação de solução de APM – Application Performance Monitoring, incluindo o serviço de instalação e configuração, treinamento, consultoria e suporte técnico, em conformidade com este Edital e seus anexos.",
-   "orgao": "BANESTES SA BANCO DO ESTADO DO ESPIRITO SANTO",
-   "unidade": "EES - BANCO DO ESTADO DO ESPÍRITO SANTO",
-   "uf": "ES",
-   "municipio": "Vitória",
-   "modalidade": "Pregão - Eletrônico",
-   "modalidade_id": 6,
-   "modo_disputa": "Aberto",
-   "numero": "6",
-   "processo": "2025-VVB34",
-   "srp": false,
-   "valor": 0.0,
-   "abertura": "2026-09-29T09:00:00",
-   "encerramento": "2026-10-21T13:30:00",
-   "publicacao": "2026-09-28T15:23:28",
-   "categorias": [
-    "Serviço"
-   ],
-   "termos": [
-    "instalacao e configuracao",
-    "suporte tecnico"
-   ],
-   "fabricantes": [],
-   "pontos": 3,
-   "me_epp_texto": false,
-   "beneficio": "Ampla",
-   "orcamento_sigiloso": "total",
-   "link_pncp": "https://pncp.gov.br/app/editais/28127603014802/2026/19",
-   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=92556005000062026",
-   "_cnpj": "28127603014802",
-   "_ano": 2026,
-   "_seq": 19,
-   "primeiro_visto": "2026-10-19"
-  },
-  {
-   "id": "44229821000170-1-000078/2026",
-   "objeto": "[LICITANET] - Constitui objeto da presente licitação a contratação de pessoa jurídica especializada, detentora de outorga da ANATEL, para implantação e gestão de solução integrada de comunicação unificada (PABX IP em Nuvem e STFC), para atender às unidades da Prefeitura Municipal de Jardinópolis/SP.",
-   "orgao": "MUNICIPIO DE JARDINOPOLIS",
-   "unidade": "MUNICÍPIO DE JARDINÓPOLIS/SP",
-   "uf": "SP",
-   "municipio": "Jardinópolis",
-   "modalidade": "Pregão - Eletrônico",
-   "modalidade_id": 6,
-   "modo_disputa": "Aberto",
-   "numero": "31",
-   "processo": "118/2026",
-   "srp": false,
-   "valor": 1614408.4,
-   "abertura": "2026-10-05T13:22:09",
-   "encerramento": "2026-10-21T14:00:00",
-   "publicacao": "2026-09-22T14:59:38",
-   "categorias": [
-    "Equipamento",
-    "Licença/Software"
-   ],
-   "termos": [
-    "nuvem",
-    "pabx"
-   ],
-   "fabricantes": [],
-   "pontos": 6,
-   "me_epp_texto": false,
-   "beneficio": "Ampla",
-   "orcamento_sigiloso": "nao",
-   "link_pncp": "https://pncp.gov.br/app/editais/44229821000170/2026/78",
-   "link_origem": "https://licitanet.com.br/sessao/202391",
-   "_cnpj": "44229821000170",
-   "_ano": 2026,
-   "_seq": 78,
-   "primeiro_visto": "2026-10-19"
-  },
   {
    "id": "44935278000126-1-000153/2026",
    "objeto": "CONTRATAÇÃO DE EMPRESA PARA PRESTAÇÃO DE SERVIÇOS DE IMPRESSÃO, CÓPIA E DIGITALIZAÇÃO, MEDIANTE A DISPONIBILIZAÇÃO, EM REGIME DE COMODATO, DE IMPRESSORAS LASER MONOCROMÁTICAS E COLORIDAS, MULTIFUNCIONAIS DIGITAIS E ENVELOPADORA PROFISSIONAL, COM FORNECIMENTO CONTÍNUO DE SUPRIMENTOS ORIGINAIS (TONERS, PEÇAS DE REPOSIÇÃO E DEMAIS INSUMOS), MANUTENÇÃO PREVENTIVA E CORRETIVA ON-SITE, SOFTWARE DE GESTÃO DE IMPRESSÃO E COLETA DE CONTADORES, CABENDO À CONTRATADA O FORNECIMENTO DE TODOS OS INSUMOS NECESSÁRIOS AO FUNCIONAMENTO DOS EQUIPAMENTOS, EXCETO PAPEL",
@@ -1089,41 +944,6 @@
    "_cnpj": "18025973000140",
    "_ano": 2026,
    "_seq": 79,
-   "primeiro_visto": "2026-10-19"
-  },
-  {
-   "id": "30134050000122-1-000031/2026",
-   "objeto": "Aquisição de microcomputadores, servidores, notebooks e monitores,",
-   "orgao": "INSTITUTO DE PREVIDENCIA DA ASSEMBLEIA LEGISLATIVA DO ESTADO DO RIO DE JANEIRO - IPALERJ",
-   "unidade": "ERJ-INSTITUTO DE PREV DA ALE RIO DE JANEIRO",
-   "uf": "RJ",
-   "municipio": "Rio de Janeiro",
-   "modalidade": "Pregão - Eletrônico",
-   "modalidade_id": 6,
-   "modo_disputa": "Aberto",
-   "numero": "29",
-   "processo": "6.228/2025",
-   "srp": false,
-   "valor": 1464059.37,
-   "abertura": "2026-10-06T09:00:00",
-   "encerramento": "2026-10-22T08:02:00",
-   "publicacao": "2026-10-05T14:44:50",
-   "categorias": [
-    "Equipamento"
-   ],
-   "termos": [
-    "microcomputadores"
-   ],
-   "fabricantes": [],
-   "pontos": 3,
-   "me_epp_texto": false,
-   "beneficio": "Ampla",
-   "orcamento_sigiloso": "nao",
-   "link_pncp": "https://pncp.gov.br/app/editais/30134050000122/2026/31",
-   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=93037705000292026",
-   "_cnpj": "30134050000122",
-   "_ano": 2026,
-   "_seq": 31,
    "primeiro_visto": "2026-10-19"
   },
   {
@@ -5153,6 +4973,43 @@
    "primeiro_visto": "2026-10-20"
   },
   {
+   "id": "00394502000144-1-014084/2026",
+   "objeto": "Aquisição dos acessórios de rede de computadores, cabos, adaptadores e outros dispositivos de rede, características compatível para uso em CLTI.",
+   "orgao": "COMANDO DA MARINHA",
+   "unidade": "CENTRO DE INTENDÊNCIA TECNO.DA MARINHA SP",
+   "uf": "SP",
+   "municipio": "São Paulo",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "310",
+   "processo": "63230.003040/2026-67",
+   "srp": false,
+   "valor": 64315.18,
+   "abertura": "2026-10-21T13:00:00",
+   "encerramento": "2026-10-26T08:00:00",
+   "publicacao": "2026-10-21T12:58:53",
+   "categorias": [
+    "Serviço",
+    "Equipamento"
+   ],
+   "termos": [
+    "computadores",
+    "rede de computadores"
+   ],
+   "fabricantes": [],
+   "pontos": 6,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/00394502000144/2026/14084",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=74205006003102026",
+   "_cnpj": "00394502000144",
+   "_ano": 2026,
+   "_seq": 14084,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
    "id": "02031332000169-1-000053/2026",
    "objeto": "Registro de Preços para eventual e futura aquisição de equipamentos de informática, aparelhos de ar condicionado e câmaras frias para atendimento as necessidades do CISMEPI.",
    "orgao": "CONSORCIO INTERMUNICIPAL DE SAUDE DO MEDIO PIRACICABA",
@@ -5330,6 +5187,41 @@
    "_cnpj": "18715599000105",
    "_ano": 2026,
    "_seq": 749,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
+   "id": "00394502000144-1-014098/2026",
+   "objeto": "Halter Ajustável Até 24kg Profissional com Anilhas\nBanco Inclinável para execução de exercícios físicos variados\ncomputador Dual HDMI 4K Display, Dual Gigabit LAN, WiFi6/BT5.2\nKIT TV 2 RECEPTOR + ANTENA BANDA KU 60cm + LNBF SIMPLES + 2\nCABO RG59 O Receptor SATHD VX10 via satélite",
+   "orgao": "COMANDO DA MARINHA",
+   "unidade": "COMANDO DA FORCA DE SUBMARINOS",
+   "uf": "RJ",
+   "municipio": "Rio de Janeiro",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "153",
+   "processo": "6 3 3 3 0 . 0 0 0 5 7 0 / 2 0",
+   "srp": false,
+   "valor": 6483.77,
+   "abertura": "2026-10-21T15:10:00",
+   "encerramento": "2026-10-26T08:10:00",
+   "publicacao": "2026-10-21T14:21:49",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "computador"
+   ],
+   "fabricantes": [],
+   "pontos": 3,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/00394502000144/2026/14098",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=79150006001532026",
+   "_cnpj": "00394502000144",
+   "_ano": 2026,
+   "_seq": 14098,
    "primeiro_visto": "2026-10-21"
   },
   {
@@ -6176,6 +6068,42 @@
    "primeiro_visto": "2026-10-19"
   },
   {
+   "id": "00394502000144-1-014092/2026",
+   "objeto": "Aquisição de materiais da Divisão de Tecnologia da Informação, destinados a Implantação da infraestrutura de TIC da Policlínica Naval Nossa Senhora da Penha (PNNSP).",
+   "orgao": "COMANDO DA MARINHA",
+   "unidade": "CENTRO MEDICO ASSISTENCIAL DA MARINHA",
+   "uf": "RJ",
+   "municipio": "Rio de Janeiro",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "112",
+   "processo": "63471.001674/2026-42",
+   "srp": false,
+   "valor": 50588.49,
+   "abertura": "2026-10-21T16:00:00",
+   "encerramento": "2026-10-26T10:00:00",
+   "publicacao": "2026-10-21T13:47:12",
+   "categorias": [
+    "Serviço"
+   ],
+   "termos": [
+    "infraestrutura de ti",
+    "tecnologia da informacao"
+   ],
+   "fabricantes": [],
+   "pontos": 5,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/00394502000144/2026/14092",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=76570006001122026",
+   "_cnpj": "00394502000144",
+   "_ano": 2026,
+   "_seq": 14092,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
    "id": "58200015000183-1-000521/2026",
    "objeto": "a AQUISIÇÃO DE SUPORTES MÓVEIS TIPO PEDESTAL PARA TELEVISORES OU MONITORES DE 32 A 65 POLEGADAS, COM ALTURA REGULÁVEL, RODÍZIOS E BANDEJA PARA NOTEBOOK, a serem utilizados na Secretaria Municipal de Saúde – SMS e Secretaria Municipal de Meio Ambiente -SEMAM",
    "orgao": "MUNICIPIO DE SANTOS",
@@ -6753,6 +6681,78 @@
    "primeiro_visto": "2026-10-20"
   },
   {
+   "id": "05510098000140-1-000040/2026",
+   "objeto": "Módulos de memória RAM DDR4, frequência de 3200 MHz, capacidade de 16 GB, SO-DIMM (Notebook) compatível com Lenovo ThinkCentre M75q Gen 2",
+   "orgao": "SUBPREFEITURA M'BOI MIRIM",
+   "unidade": "PMSP - SUBPREFEITURA M'BOI MIRIM",
+   "uf": "SP",
+   "municipio": "São Paulo",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "48",
+   "processo": "6045.2026/0003661-9",
+   "srp": false,
+   "valor": 28352.4,
+   "abertura": "2026-10-22T08:00:00",
+   "encerramento": "2026-10-27T08:00:00",
+   "publicacao": "2026-10-21T12:36:10",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "notebook"
+   ],
+   "fabricantes": [],
+   "pontos": 3,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/05510098000140/2026/40",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=92508106000482026",
+   "_cnpj": "05510098000140",
+   "_ano": 2026,
+   "_seq": 40,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
+   "id": "46523080000160-1-000177/2026",
+   "objeto": "Aquisição de software autodesk autocad",
+   "orgao": "MUNICIPIO DE FRANCO DA ROCHA",
+   "unidade": "Prefeitura Municipal de Franco da Rocha",
+   "uf": "SP",
+   "municipio": "Franco da Rocha",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "092/2026",
+   "processo": "9029/2026",
+   "srp": false,
+   "valor": 29528.92,
+   "abertura": "2026-10-22T08:00:00",
+   "encerramento": "2026-10-27T08:00:00",
+   "publicacao": "2026-10-21T16:25:43",
+   "categorias": [
+    "Licença/Software"
+   ],
+   "termos": [
+    "aquisicao de software",
+    "autodesk",
+    "software"
+   ],
+   "fabricantes": [],
+   "pontos": 8,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/46523080000160/2026/177",
+   "link_origem": "",
+   "_cnpj": "46523080000160",
+   "_ano": 2026,
+   "_seq": 177,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
    "id": "18650952000116-1-000055/2026",
    "objeto": "Sistema de Registro de Preços para futura e eventual contratação de empresa especializada para prestação de serviços de manutenção preventiva e corretiva de equipamentos de informática, compreendendo computadores, notebooks e impressoras, destinados ao atendimento das necessidades da Secretaria Municipal de Administração e Recursos Humanos do Município de Espinosa.",
    "orgao": "MUNICIPIO DE ESPINOSA",
@@ -6791,6 +6791,43 @@
    "_ano": 2026,
    "_seq": 55,
    "primeiro_visto": "2026-10-19"
+  },
+  {
+   "id": "04443748000110-1-000042/2026",
+   "objeto": "aquisicao de materiais eletricos  suporte de parede para eletrodomesticos  material de rede de dados  ferramentas manuais  armario guarda volumes  escada domestica  sacos coletores descartaveis para aspirador  discos e escovas para enceradeira industrial  cupulas de reposicao para lustres e luminarias e pulpito de acrilico para cerimonial  destinados ao atendimento das necessidades administrativas  operacionais  de manutencao  limpeza  organizacao  infraestrutura e apoio aos eventos institucionais da Camara Municipal de Catas Altas MG",
+   "orgao": "CAMARA MUNICIPAL DE CATAS ALTAS",
+   "unidade": "CAMARA MUNICIPAL DE CATAS ALTAS",
+   "uf": "MG",
+   "municipio": "Catas Altas",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "13 | Processo 35",
+   "processo": "13",
+   "srp": true,
+   "valor": 19228.45,
+   "abertura": "2026-10-22T08:00:00",
+   "encerramento": "2026-10-27T08:00:00",
+   "publicacao": "2026-10-21T15:40:30",
+   "categorias": [
+    "Serviço",
+    "Equipamento"
+   ],
+   "termos": [
+    "material de rede",
+    "rede de dados"
+   ],
+   "fabricantes": [],
+   "pontos": 6,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/04443748000110/2026/42",
+   "link_origem": " ",
+   "_cnpj": "04443748000110",
+   "_ano": 2026,
+   "_seq": 42,
+   "primeiro_visto": "2026-10-21"
   },
   {
    "id": "27142702000166-1-000456/2026",
@@ -6863,6 +6900,46 @@
    "_ano": 2026,
    "_seq": 87,
    "primeiro_visto": "2026-10-19"
+  },
+  {
+   "id": "17217985005840-1-000072/2026",
+   "objeto": "Dispensa Eletrônica, a fim de contratar, à pedido da IMPRENSA-SSC UFMG, \"serviços do tipo o de Solução de Tecnologia da Informação e Comunicação – TIC, consistente na locação de 03 (três) licenças de uso, por assinatura, do software Adobe Creative Cloud Pro para equipes – All Apps\", conforme detalhado no Termo de Referência, doc SEI id nº 5646203.",
+   "orgao": "UNIVERSIDADE FEDERAL DE MINAS GERAIS",
+   "unidade": "ADMINISTRACAO GERAL/UFMG",
+   "uf": "MG",
+   "municipio": "Belo Horizonte",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "263",
+   "processo": "23072.260576/2026-23",
+   "srp": false,
+   "valor": 56750.79,
+   "abertura": "2026-10-21T17:17:00",
+   "encerramento": "2026-10-27T08:08:00",
+   "publicacao": "2026-10-21T15:44:37",
+   "categorias": [
+    "Licença/Software"
+   ],
+   "termos": [
+    "adobe",
+    "cloud",
+    "licencas de uso",
+    "licencas de uso, por assinatura, do software",
+    "software",
+    "tecnologia da informacao"
+   ],
+   "fabricantes": [],
+   "pontos": 16,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/17217985005840/2026/72",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=15325406002632026",
+   "_cnpj": "17217985005840",
+   "_ano": 2026,
+   "_seq": 72,
+   "primeiro_visto": "2026-10-21"
   },
   {
    "id": "46181376000140-1-000113/2026",
@@ -8881,6 +8958,42 @@
    "_ano": 2026,
    "_seq": 88,
    "primeiro_visto": "2026-10-19"
+  },
+  {
+   "id": "00394452000103-1-022689/2026",
+   "objeto": "Contratação de serviço de fornecimento de internet, com instalação completa, fornecimento de equipamentos, internet fibra óptica de  800 Mbps manutenção preventiva e corretiva, e cobertura WiFi integral em todos os quartos e áreas comuns do Hotel de Trânsito do 38º Batalhão de Infantaria.",
+   "orgao": "COMANDO DO EXERCITO",
+   "unidade": "38  BATALHAO DE INFANTARIA/MEX/ES",
+   "uf": "ES",
+   "municipio": "Vila Velha",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "102",
+   "processo": "64064.011319/2026-46",
+   "srp": false,
+   "valor": 4231.92,
+   "abertura": "2026-10-23T08:00:00",
+   "encerramento": "2026-10-29T08:00:00",
+   "publicacao": "2026-10-21T16:31:35",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "fibra optica",
+    "wifi"
+   ],
+   "fabricantes": [],
+   "pontos": 5,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/00394452000103/2026/22689",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=16009306001022026",
+   "_cnpj": "00394452000103",
+   "_ano": 2026,
+   "_seq": 22689,
+   "primeiro_visto": "2026-10-21"
   },
   {
    "id": "51102317000170-1-000003/2026",
@@ -12982,47 +13095,6 @@
    "primeiro_visto": "2026-10-19"
   },
   {
-   "id": "16870974000166-1-000195/2026",
-   "objeto": "LOCAÇÃO DE SOFTWARES - O presente tem por objeto a contratação de empresa especializada  para licença de uso de sistema integrado para Gestão Pública Municipal, em plataforma online e softwares nativos de plataforma 100% web, com os serviços de migração de dados, implantação, treinamento de usuários, suporte técnico, manutenção corretiva, legal e evolutiva, bem como hospedagem da solução em data center para o Município de Santo Antônio do Monte/MG, tendo em vista a revogação em 03/07/2026 do Processo 126/2025,  atendendo a solicitação da Secretaria Municipal de Administração, de acordo com especificações, quantidades e demais condições estabelecidas neste Edital e seus anexos.",
-   "orgao": "MUNICIPIO DE SANTO ANTONIO DO MONTE",
-   "unidade": "Sec. Municipal de Administração e RH",
-   "uf": "MG",
-   "municipio": "Santo Antônio do Monte",
-   "modalidade": "Pregão - Eletrônico",
-   "modalidade_id": 6,
-   "modo_disputa": "Aberto-Fechado",
-   "numero": "PRE 69",
-   "processo": "123/2026",
-   "srp": false,
-   "valor": 3741270.7,
-   "abertura": "2026-10-19T17:00:00",
-   "encerramento": "2026-11-04T08:29:00",
-   "publicacao": "2026-10-19T14:20:28",
-   "categorias": [
-    "Serviço",
-    "Licença/Software"
-   ],
-   "termos": [
-    "data center",
-    "licenca de uso de sistema",
-    "migracao de dados",
-    "sistema integrado",
-    "softwares",
-    "suporte tecnico"
-   ],
-   "fabricantes": [],
-   "pontos": 15,
-   "me_epp_texto": false,
-   "beneficio": "Ampla",
-   "orcamento_sigiloso": "nao",
-   "link_pncp": "https://pncp.gov.br/app/editais/16870974000166/2026/195",
-   "link_origem": null,
-   "_cnpj": "16870974000166",
-   "_ano": 2026,
-   "_seq": 195,
-   "primeiro_visto": "2026-10-19"
-  },
-  {
    "id": "16870974000166-1-000196/2026",
    "objeto": "[Portal de Compras Públicas] - LOCAÇÃO DE SOFTWARES - O presente tem por objeto a contratação de empresa especializada  para licença de uso de sistema integrado para Gestão Pública Municipal, em plataforma online e softwares nativos de plataforma 100% web, com os serviços de migração de dados, implantação, treinamento de usuários, suporte técnico, manutenção corretiva, legal e evolutiva, bem como hospedagem da solução em data center para o Município de Santo Antônio do Monte/MG, tendo em vista a revogação em 03/07/2026 do Processo 126/2025,  atendendo a solicitação da Secretaria Municipal de Administração, de acordo com especificações, quantidades e demais condições estabelecidas neste Edital e seus anexos.",
    "orgao": "MUNICIPIO DE SANTO ANTONIO DO MONTE",
@@ -14506,6 +14578,41 @@
    "primeiro_visto": "2026-10-21"
   },
   {
+   "id": "30134050000122-1-000031/2026",
+   "objeto": "Aquisição de microcomputadores, servidores, notebooks e monitores,",
+   "orgao": "INSTITUTO DE PREVIDENCIA DA ASSEMBLEIA LEGISLATIVA DO ESTADO DO RIO DE JANEIRO - IPALERJ",
+   "unidade": "ERJ-INSTITUTO DE PREV DA ALE RIO DE JANEIRO",
+   "uf": "RJ",
+   "municipio": "Rio de Janeiro",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "29",
+   "processo": "6.228/2025",
+   "srp": false,
+   "valor": 1464059.37,
+   "abertura": "2026-10-22T09:00:00",
+   "encerramento": "2026-11-05T08:02:00",
+   "publicacao": "2026-10-05T14:44:50",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "microcomputadores"
+   ],
+   "fabricantes": [],
+   "pontos": 3,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/30134050000122/2026/31",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=93037705000292026",
+   "_cnpj": "30134050000122",
+   "_ano": 2026,
+   "_seq": 31,
+   "primeiro_visto": "2026-10-19"
+  },
+  {
    "id": "46634101000115-1-000480/2026",
    "objeto": "REGISTRO DE PREÇOS PARA POSSÍVEL AQUISIÇÃO DE MATERIAL ELÉTRICO, INFRAESTRUTURA DE REDE E ACESSÓRIOS DE T.I.",
    "orgao": "MUNICIPIO DE BOTUCATU",
@@ -14577,41 +14684,6 @@
    "_ano": 2026,
    "_seq": 22106,
    "primeiro_visto": "2026-10-19"
-  },
-  {
-   "id": "27167394000123-1-000085/2026",
-   "objeto": "[Portal de Compras Públicas] - Registro de preço para eventual e futura aquisição de computadores com garantia estendida.",
-   "orgao": "MUNICIPIO DE IUNA",
-   "unidade": "Prefeitura Municipal de Iúna",
-   "uf": "ES",
-   "municipio": "Iúna",
-   "modalidade": "Pregão - Eletrônico",
-   "modalidade_id": 6,
-   "modo_disputa": "Aberto",
-   "numero": "000044",
-   "processo": "GWGPW-/2025",
-   "srp": true,
-   "valor": 1585076.91,
-   "abertura": "2026-10-22T08:00:00",
-   "encerramento": "2026-11-05T08:30:00",
-   "publicacao": "2026-10-21T09:48:23",
-   "categorias": [
-    "Equipamento"
-   ],
-   "termos": [
-    "computadores"
-   ],
-   "fabricantes": [],
-   "pontos": 3,
-   "me_epp_texto": false,
-   "beneficio": "Parcial ME/EPP",
-   "orcamento_sigiloso": "nao",
-   "link_pncp": "https://pncp.gov.br/app/editais/27167394000123/2026/85",
-   "link_origem": "https://www.portaldecompraspublicas.com.br/processos/ES/Prefeitura-Municipal-de-Iuna-1169/RPE-000044-2026-2026-519923",
-   "_cnpj": "27167394000123",
-   "_ano": 2026,
-   "_seq": 85,
-   "primeiro_visto": "2026-10-21"
   },
   {
    "id": "96291141000180-1-007153/2026",
@@ -14825,6 +14897,44 @@
    "_cnpj": "01263896000164",
    "_ano": 2026,
    "_seq": 755,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
+   "id": "60633674000155-1-000061/2026",
+   "objeto": "Fornecimento ao IPT, de solução de Infraestrutura de TIC (Tecnologia da Informação e Comunicação) para Desktops Virtuais (doravante denominado VDI)",
+   "orgao": "(UO) ESP-INST.PESQ TECN.EST.DE S.P.S/A-IPT",
+   "unidade": "ESP-INST. PESQ. TECNOL. EST .SP. S.A.",
+   "uf": "SP",
+   "municipio": "São Paulo",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "52",
+   "processo": "PE00023/2026",
+   "srp": false,
+   "valor": 0.0,
+   "abertura": "2026-10-22T09:00:00",
+   "encerramento": "2026-11-05T09:00:00",
+   "publicacao": "2026-10-21T14:06:31",
+   "categorias": [
+    "Serviço",
+    "Equipamento"
+   ],
+   "termos": [
+    "desktops",
+    "infraestrutura de ti",
+    "tic"
+   ],
+   "fabricantes": [],
+   "pontos": 8,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "total",
+   "link_pncp": "https://pncp.gov.br/app/editais/60633674000155/2026/61",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=10310105000522026",
+   "_cnpj": "60633674000155",
+   "_ano": 2026,
+   "_seq": 61,
    "primeiro_visto": "2026-10-21"
   },
   {
@@ -15565,6 +15675,42 @@
    "primeiro_visto": "2026-10-20"
   },
   {
+   "id": "46172888000140-1-000403/2026",
+   "objeto": "AQUISICAO DE EQUIPAMENTOS DE INFORMATICA",
+   "orgao": "MUNICIPIO DE BARRA BONITA",
+   "unidade": "Prefeitura Municipal da Est. Turística de Barra Bonita",
+   "uf": "SP",
+   "municipio": "Barra Bonita",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "00062",
+   "processo": "E00062",
+   "srp": false,
+   "valor": 118921.05,
+   "abertura": "2026-10-22T08:00:00",
+   "encerramento": "2026-11-06T08:30:00",
+   "publicacao": "2026-10-21T14:59:30",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "equipamentos de informatica",
+    "informatica"
+   ],
+   "fabricantes": [],
+   "pontos": 5,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/46172888000140/2026/403",
+   "link_origem": "",
+   "_cnpj": "46172888000140",
+   "_ano": 2026,
+   "_seq": 403,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
    "id": "18278051000145-1-000285/2026",
    "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE TELECOMUNICAÇÕES, VISANDO AO FORNECIMENTO DE LINK DE ACESSO À INTERNET VIA SATÉLITE DE BAIXA ÓRBITA (LEO), COM FRANQUIA ILIMITADA, PARA ATENDER ÀS DEMANDAS DAS CRECHES DA REDE MUNICIPAL.",
    "orgao": "MUNICIPIO DE PARACATU",
@@ -15672,6 +15818,41 @@
    "_ano": 2026,
    "_seq": 14,
    "primeiro_visto": "2026-10-19"
+  },
+  {
+   "id": "18278051000145-1-000286/2026",
+   "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE TELECOMUNICAÇÕES, VISANDO AO FORNECIMENTO DE LINK DE ACESSO A INTERNET VIA SATÉLITE DE BAIXA ÓRBITA (LEO), COM FRANQUIA ILIMITADA, PARA ATENDER AS DEMANDAS DAS CRECHES DA REDE MUNICIPAL.",
+   "orgao": "MUNICIPIO DE PARACATU",
+   "unidade": "Paracatu",
+   "uf": "MG",
+   "municipio": "Paracatu",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "15/2026EDU",
+   "processo": "10702/2026",
+   "srp": false,
+   "valor": 290998.5,
+   "abertura": "2026-10-21T17:30:00",
+   "encerramento": "2026-11-06T08:59:00",
+   "publicacao": "2026-10-21T14:25:31",
+   "categorias": [
+    "Serviço"
+   ],
+   "termos": [
+    "acesso a internet"
+   ],
+   "fabricantes": [],
+   "pontos": 3,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/18278051000145/2026/286",
+   "link_origem": "",
+   "_cnpj": "18278051000145",
+   "_ano": 2026,
+   "_seq": 286,
+   "primeiro_visto": "2026-10-21"
   },
   {
    "id": "23274194000119-1-000105/2026",
@@ -16074,6 +16255,43 @@
    "primeiro_visto": "2026-10-21"
   },
   {
+   "id": "29138302000102-1-000261/2026",
+   "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA LOCAÇÃO INTEGRADA DE SOLUÇÂO EDUCACIONAL DE FABRICAÇÃO DIGITAL E PROTOTIPAGEM TRIDIMENSIONAL, COMPOSTA POR IMPRESSORAS 3D, INSTALAÇÃO, CONFIGURAÇÃO, TESTES OPERACIONAIS, TREINAMENTO INICIAL, SUPORTE TÉCNICO REMOTO E PRESENCIAL, MANUTENÇÃO PREVENTIVA E CORRETIVA, REPOSIÇÃO DE BICOS DE IMPRESSÃO, PEÇAS E COMPONENTES, RESERVA TÉCNICA INTEGRADA, ACOMPANHAMENTO OPERACIONAL, GARANTIA DE DISPONIBILIDADE E FORNECIMENTO DE CONSUMÍVEIS, DESTINADA AO ATENDIMENTO DA",
+   "orgao": "MUNICIPIO DE ITAGUAI",
+   "unidade": "Prefeitura Municipal de Itaguaí - RJ",
+   "uf": "RJ",
+   "municipio": "Itaguaí",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "084",
+   "processo": "12616/2026",
+   "srp": true,
+   "valor": 1411153.2,
+   "abertura": "2026-10-22T08:00:00",
+   "encerramento": "2026-11-06T09:59:00",
+   "publicacao": "2026-10-21T15:12:04",
+   "categorias": [
+    "Serviço",
+    "Equipamento"
+   ],
+   "termos": [
+    "impressoras",
+    "suporte tecnico"
+   ],
+   "fabricantes": [],
+   "pontos": 4,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/29138302000102/2026/261",
+   "link_origem": "https://comprasbr.com.br/pregao-eletronico-detalhe/?idlicitacao=49176",
+   "_cnpj": "29138302000102",
+   "_ano": 2026,
+   "_seq": 261,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
    "id": "46377800000127-1-004478/2026",
    "objeto": "Contratação de serviços de readequação de insfraestrutura de rede lógica de dados ao 1º BPChq (ROTA)",
    "orgao": "SAO PAULO SECRETARIA DA SEGURANCA PUBLICA",
@@ -16142,6 +16360,41 @@
    "_cnpj": "07420613000127",
    "_ano": 2026,
    "_seq": 201,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
+   "id": "31777550000145-1-000011/2026",
+   "objeto": "Aquisição de 5 (cinco) notebooks ultrafinos de alto desempenho para a Secretaria de Controle e Transparência.",
+   "orgao": "SECRETARIA DE ESTADO DE CONTROLE E TRANSPARENCIA - SECONT",
+   "unidade": "SECRETARIA DE ESTADO DE CONTROLE E TRANSPARÊNCIA",
+   "uf": "ES",
+   "municipio": "Vitória",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "004",
+   "processo": "2026-Z4NNZ",
+   "srp": false,
+   "valor": 70997.35,
+   "abertura": "2026-10-22T10:00:00",
+   "encerramento": "2026-11-06T10:00:00",
+   "publicacao": "2026-10-21T15:27:13",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "notebooks"
+   ],
+   "fabricantes": [],
+   "pontos": 3,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/31777550000145/2026/11",
+   "link_origem": "https://siades.es.gov.br/licitacao-pub/#/licitacao-visualizacao/2214/dados-edital",
+   "_cnpj": "31777550000145",
+   "_ano": 2026,
+   "_seq": 11,
    "primeiro_visto": "2026-10-21"
   },
   {
@@ -16819,6 +17072,113 @@
    "primeiro_visto": "2026-10-21"
   },
   {
+   "id": "45780103000150-1-001177/2026",
+   "objeto": "PS DE LOCAÇÃO DE CONCENTRADORES DE OXIGÊNIO MEDICINAL E CILINDRO DE BACKUP, EM COMODATO, PARA USO DOMICILIAR - SMPS",
+   "orgao": "MUNICIPIO DE JUNDIAI",
+   "unidade": "SMPS - Secretaria Municipal de Promoção da Saúde",
+   "uf": "SP",
+   "municipio": "Jundiaí",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "PMJ-2026-206-14",
+   "processo": "2026-32476-0",
+   "srp": false,
+   "valor": 940910.52,
+   "abertura": "2026-10-21T18:00:00",
+   "encerramento": "2026-11-09T09:00:00",
+   "publicacao": "2026-10-21T11:47:56",
+   "categorias": [
+    "Licença/Software"
+   ],
+   "termos": [
+    "backup"
+   ],
+   "fabricantes": [],
+   "pontos": 3,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/45780103000150/2026/1177",
+   "link_origem": "https://compraaberta.jundiai.sp.gov.br/licitacoes/",
+   "_cnpj": "45780103000150",
+   "_ano": 2026,
+   "_seq": 1177,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
+   "id": "64925092000101-1-000066/2026",
+   "objeto": "Contratação de empresa especializada para o fornecimento de equipamentos, incluindo câmeras, mesas controladoras e equipamentos de informática, para a substituição e atualização tecnológica do parque de gravação de imagem, visando viabilizar, aprimorar e garantir a continuidade das transmissões das sessões da Câmara Municipal de Matão.",
+   "orgao": "CAMARA MUNICIPAL DE MATAO",
+   "unidade": "MSP-CÂMARA MUNICIPAL DE MATÃO",
+   "uf": "SP",
+   "municipio": "Matão",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "36",
+   "processo": "003/2026",
+   "srp": false,
+   "valor": 86178.12,
+   "abertura": "2026-10-22T09:00:00",
+   "encerramento": "2026-11-09T09:00:00",
+   "publicacao": "2026-10-21T12:30:03",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "equipamentos de informatica",
+    "informatica"
+   ],
+   "fabricantes": [],
+   "pontos": 5,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/64925092000101/2026/66",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=93074905000362026",
+   "_cnpj": "64925092000101",
+   "_ano": 2026,
+   "_seq": 66,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
+   "id": "63025530000104-1-004206/2026",
+   "objeto": "IMPLANTAÇÃO DE PONTOS DE REDE LÓGICA E INFRAESTRUTURA DE CABEAMENTO ESTRUTURADO - 19 pontos de rede",
+   "orgao": "UNIVERSIDADE DE SAO PAULO",
+   "unidade": "ESP-FACULDADE ODONTOLOGIA DE RIB. PRETO - USP",
+   "uf": "SP",
+   "municipio": "Ribeirão Preto",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto-Fechado",
+   "numero": "54",
+   "processo": "154.00016501/2026-10",
+   "srp": false,
+   "valor": 20900.0,
+   "abertura": "2026-10-22T09:00:00",
+   "encerramento": "2026-11-09T09:00:00",
+   "publicacao": "2026-10-21T14:30:47",
+   "categorias": [
+    "Serviço"
+   ],
+   "termos": [
+    "cabeamento estruturado",
+    "rede logica"
+   ],
+   "fabricantes": [],
+   "pontos": 6,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/63025530000104/2026/4206",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=10214605000542026",
+   "_cnpj": "63025530000104",
+   "_ano": 2026,
+   "_seq": 4206,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
    "id": "18431312000620-1-000487/2026",
    "objeto": "Contratação de serviços de solução de infraestrutura de banco de dados composta por Oracle Exadata Database Machine X11M-Z para o ambiente principal, componentes de Oracle Cloud Infrastructure (OCI) para composição do ambiente de contingência, conectividade dedicada Oracle FastConnect de 1 Gbps entre a sede da contratante e a nuvem Oracle, bem como serviços especializados de instalação, configuração, migração, testes, documentação, repasse de conhecimento e operação assistida.",
    "orgao": "MUNICIPIO DE UBERLANDIA",
@@ -16969,6 +17329,46 @@
    "primeiro_visto": "2026-10-21"
   },
   {
+   "id": "18675983000121-1-000192/2026",
+   "objeto": "CONTRATAÇÃO DE SOLUÇÃO DE PRODUTIVIDADE E COLABORAÇÃO EM NUVEM, EM MODELO SAAS (SOFTWARE AS A SERVICE), MEDIANTE DISPONIBILIZAÇÃO DE LICENÇAS DE USO DO GOOGLE WORKSPACE BUSINESS STANDARD, PARA ATENDIMENTO DAS NECESSIDADES DE COMUNICAÇÃO INSTITUCIONAL, COLABORAÇÃO CORPORATIVA E GESTÃO/ARMAZENAMENTO DE DADOS DA PREFEITURA MUNICIPAL DE POUSO ALEGRE/MG.",
+   "orgao": "MUNICIPIO DE POUSO ALEGRE",
+   "unidade": "SECRETARIA MUNICIPAL DE ADMINISTRAÇÃO",
+   "uf": "MG",
+   "municipio": "Pouso Alegre",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "PRE 101",
+   "processo": "186/2026",
+   "srp": false,
+   "valor": 31654.8,
+   "abertura": "2026-10-22T17:00:00",
+   "encerramento": "2026-11-09T09:00:00",
+   "publicacao": "2026-10-21T11:52:40",
+   "categorias": [
+    "Equipamento",
+    "Licença/Software"
+   ],
+   "termos": [
+    "armazenamento de dados",
+    "google workspace",
+    "licencas de uso",
+    "nuvem",
+    "software"
+   ],
+   "fabricantes": [],
+   "pontos": 14,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/18675983000121/2026/192",
+   "link_origem": null,
+   "_cnpj": "18675983000121",
+   "_ano": 2026,
+   "_seq": 192,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
    "id": "19279827000104-1-000161/2026",
    "objeto": "[LICITANET] - Contratação de empresa especializada para execução de serviços de construção, manutenção, adequação e expansão de infraestrutura física elétrica e de rede lógica, incluindo o fornecimento de materiais, equipamentos e mão de obra especializada, visando assegurar o adequado funcionamento e a continuidade dos serviços relacionados aos equipamentos de tecnologia da informação e comunicação (TIC), tais como microcomputadores, servidores, ativos de rede, relógios de ponto eletrônico, sistemas de videomonitoramento (CFTV), equipamentos de impressão, sistemas de telefonia IP e sistemas de climatização.",
    "orgao": "MUNICIPIO DE CARANGOLA",
@@ -17115,6 +17515,43 @@
    "primeiro_visto": "2026-10-21"
   },
   {
+   "id": "49227788000162-1-000045/2026",
+   "objeto": "Contratação de solução integrada de Segurança Inteligente de Dados, com 22 licenças, incluindo prevenção de vazamento de dados, gerenciamento de riscos internos, análise comportamental, proteção em nuvem (Microsoft 365), monitoramento com inteligência artificial, implantação, configuração, treinamento, suporte técnico e avaliações periódicas da solução.",
+   "orgao": "CAMARA MUNICIPAL DE MONTE ALTO",
+   "unidade": "MSP-CÂMARA MUNICIPAL DE MONTE ALTO",
+   "uf": "SP",
+   "municipio": "Monte Alto",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto-Fechado",
+   "numero": "47",
+   "processo": "35",
+   "srp": false,
+   "valor": 0.0,
+   "abertura": "2026-10-22T11:00:00",
+   "encerramento": "2026-11-09T11:00:00",
+   "publicacao": "2026-10-21T14:26:26",
+   "categorias": [
+    "Licença/Software"
+   ],
+   "termos": [
+    "microsoft",
+    "nuvem",
+    "suporte tecnico"
+   ],
+   "fabricantes": [],
+   "pontos": 8,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "total",
+   "link_pncp": "https://pncp.gov.br/app/editais/49227788000162/2026/45",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=93113905000472026",
+   "_cnpj": "49227788000162",
+   "_ano": 2026,
+   "_seq": 45,
+   "primeiro_visto": "2026-10-21"
+  },
+  {
    "id": "20720165000145-1-000052/2026",
    "objeto": "Contratação de empresa para renovação de licenças da solução de comunicação, colaboração e produtividade em nuvem, modelo Software as a Service - SaaS, Google Workspace Business Starter, incluindo suporte técnico e gerenciamento proativo.",
    "orgao": "UBERLANDIA CAMARA MUNICIPAL",
@@ -17188,6 +17625,41 @@
    "_ano": 2026,
    "_seq": 22,
    "primeiro_visto": "2026-10-20"
+  },
+  {
+   "id": "48664304000180-1-000264/2026",
+   "objeto": "CONTRATACAO DE EMPRESA ESPECIALIZADA NA PRESTACAO DE SERVICO GERENCIADO DE CONECTIVIDADE A INTERNET E INFRAESTRUTURA ATRAVES DE FIBRA OTICA.",
+   "orgao": "MUNICIPIO DE GUARIBA",
+   "unidade": "PREFEITURA MUNICIPAL DE GUARIBA",
+   "uf": "SP",
+   "municipio": "Guariba",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "118 | Processo 271",
+   "processo": "118",
+   "srp": false,
+   "valor": 0.0,
+   "abertura": "2026-10-22T07:30:00",
+   "encerramento": "2026-11-10T07:30:00",
+   "publicacao": "2026-10-21T15:40:24",
+   "categorias": [
+    "Serviço"
+   ],
+   "termos": [
+    "conectividade"
+   ],
+   "fabricantes": [],
+   "pontos": 3,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "total",
+   "link_pncp": "https://pncp.gov.br/app/editais/48664304000180/2026/264",
+   "link_origem": " ",
+   "_cnpj": "48664304000180",
+   "_ano": 2026,
+   "_seq": 264,
+   "primeiro_visto": "2026-10-21"
   },
   {
    "id": "25223009000192-1-000091/2026",
@@ -17876,6 +18348,42 @@
    "primeiro_visto": "2026-10-19"
   },
   {
+   "id": "20720165000145-1-000046/2026",
+   "objeto": "Fornecimento de 2 (dois) links de conexão à internet, por meio de link dedicado (IP Fixo) com velocidade de 1.000 Mbps, e meio de comunicação exclusivamente por cabo de fibra óptica, incluindo o serviço de instalação, configuração, ativação, suporte e manutenção, e o serviço agregado de segurança contra ataques do tipo negação de serviço (DDoS), além de fornecimento de todos os cabos, conectores, conversores, roteador e demais equipamentos necessários homologados pela Anatel.",
+   "orgao": "UBERLANDIA CAMARA MUNICIPAL",
+   "unidade": "CAMARA MUNICIPAL DE UBERLÂNDIA - MG",
+   "uf": "MG",
+   "municipio": "Uberlândia",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto-Fechado",
+   "numero": "9",
+   "processo": "17/2026",
+   "srp": false,
+   "valor": 0.0,
+   "abertura": "2026-10-22T08:00:00",
+   "encerramento": "2026-11-12T13:00:00",
+   "publicacao": "2026-09-30T15:31:09",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "fibra optica",
+    "roteador"
+   ],
+   "fabricantes": [],
+   "pontos": 5,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "total",
+   "link_pncp": "https://pncp.gov.br/app/editais/20720165000145/2026/46",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=92501005000092026",
+   "_cnpj": "20720165000145",
+   "_ano": 2026,
+   "_seq": 46,
+   "primeiro_visto": "2026-10-19"
+  },
+  {
    "id": "00444232000139-1-001291/2026",
    "objeto": "Contratação de empresa especializada para prestação de Serviço Telefônico Fixo Comutado (STFC) via tecnologia SIP Trunk, com capacidade mínima de 30 canais de voz simultâneos e fornecimento de uma faixa sequencial de 100 números DDR (Discagem Direta Ramal), incluindo o fornecimento em regime de comodato de um Gateway de Voz (conversor SIP para E1/Analógico) para fins de integração com a infraestrutura de PABX físico legada do órgão, englobando chamadas Locais e Longa Distância Nacional.",
    "orgao": "INDUSTRIA DE MATERIAL BELICO DO BRASIL IMBEL",
@@ -17909,6 +18417,41 @@
    "_ano": 2026,
    "_seq": 1291,
    "primeiro_visto": "2026-10-19"
+  },
+  {
+   "id": "27167394000123-1-000086/2026",
+   "objeto": "[Portal de Compras Públicas] - Registro de preço para eventual e futura aquisição de computadores com garantia estendida.",
+   "orgao": "MUNICIPIO DE IUNA",
+   "unidade": "Prefeitura Municipal de Iúna",
+   "uf": "ES",
+   "municipio": "Iúna",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "000044",
+   "processo": "GWGPW-/2025",
+   "srp": true,
+   "valor": 1585076.91,
+   "abertura": "2026-10-28T08:00:00",
+   "encerramento": "2026-11-17T08:30:00",
+   "publicacao": "2026-10-21T14:48:15",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "computadores"
+   ],
+   "fabricantes": [],
+   "pontos": 3,
+   "me_epp_texto": false,
+   "beneficio": "Parcial ME/EPP",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/27167394000123/2026/86",
+   "link_origem": "https://www.portaldecompraspublicas.com.br/processos/ES/Prefeitura-Municipal-de-Iuna-1169/RPE-000044-2026-2026-519923",
+   "_cnpj": "27167394000123",
+   "_ano": 2026,
+   "_seq": 86,
+   "primeiro_visto": "2026-10-21"
   },
   {
    "id": "50122571000177-1-000326/2026",
