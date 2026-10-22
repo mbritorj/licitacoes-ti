@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-10-22T12:06:23",
+ "atualizado_em": "2026-10-22T16:41:14",
  "ufs": [
   "RJ",
   "SP",
@@ -15,125 +15,16 @@
  "valor_limite_me_epp": 80000,
  "execucao": {
   "status": "ok",
-  "inicio": "2026-10-22T11:37:13",
-  "duracao_min": 29.2,
-  "chamadas_api": 220,
+  "inicio": "2026-10-22T16:19:51",
+  "duracao_min": 21.4,
+  "chamadas_api": 205,
   "registros_lidos": 9538,
-  "relevantes": 468,
+  "relevantes": 469,
   "combinacoes_ok": 16,
   "combinacoes_falha": [],
   "erros": []
  },
  "itens": [
-  {
-   "id": "19864323000151-1-000010/2026",
-   "objeto": "[LICITANET] - REGISTRO DE PREÇOS PARA FUTURA E EVENTUAL\nAQUISIÇÃO DE COMPUTADORES E NOTEBOOKS, DESTINADOS AO ATENDIMENTO\nDAS NECESSIDADES DOS MUNICÍPIOS CONSORCIADOS AO CONVALE E DO PRÓPRIO\nCONVALE",
-   "orgao": "CONSORCIO INTERMUNICIPAL DE DESENVOLVIMENTO REGIONAL",
-   "unidade": "CONVALE- Consórcio Intermunicipal de Desenvolvimento Regional/MG",
-   "uf": "MG",
-   "municipio": "Uberaba",
-   "modalidade": "Pregão - Eletrônico",
-   "modalidade_id": 6,
-   "modo_disputa": "Aberto",
-   "numero": "9",
-   "processo": "017/2026",
-   "srp": true,
-   "valor": 1782449.04,
-   "abertura": "2026-10-07T10:10:10",
-   "encerramento": "2026-10-22T14:00:00",
-   "publicacao": "2026-10-07T10:10:14",
-   "categorias": [
-    "Equipamento"
-   ],
-   "termos": [
-    "computadores"
-   ],
-   "fabricantes": [],
-   "pontos": 3,
-   "me_epp_texto": false,
-   "beneficio": "Parcial ME/EPP",
-   "orcamento_sigiloso": "nao",
-   "link_pncp": "https://pncp.gov.br/app/editais/19864323000151/2026/10",
-   "link_origem": "https://licitanet.com.br/sessao/204033",
-   "_cnpj": "19864323000151",
-   "_ano": 2026,
-   "_seq": 10,
-   "primeiro_visto": "2026-10-19"
-  },
-  {
-   "id": "64614605000155-1-000108/2026",
-   "objeto": "contratação de empresa\r\npara o fornecimento de 07 (sete) licenças do software Microsoft 365\r\nPersonal, pelo período de 12 (doze) meses, destinadas ao atendimento das\r\nnecessidades administrativas e legislativas da Câmara Municipal de\r\nTarumã/SP.",
-   "orgao": "CAMARA MUNICIPAL DE TARUMA",
-   "unidade": "CÂMARA MUNICIPAL DE TARUMÃ",
-   "uf": "SP",
-   "municipio": "Tarumã",
-   "modalidade": "Dispensa",
-   "modalidade_id": 8,
-   "modo_disputa": "Dispensa Com Disputa",
-   "numero": "625",
-   "processo": "625/2026",
-   "srp": false,
-   "valor": 4318.58,
-   "abertura": "2026-10-13T17:00:00",
-   "encerramento": "2026-10-22T14:30:00",
-   "publicacao": "2026-10-13T16:09:51",
-   "categorias": [
-    "Licença/Software"
-   ],
-   "termos": [
-    "licencas do software",
-    "microsoft",
-    "software"
-   ],
-   "fabricantes": [],
-   "pontos": 11,
-   "me_epp_texto": false,
-   "beneficio": "Ampla",
-   "orcamento_sigiloso": "nao",
-   "link_pncp": "https://pncp.gov.br/app/editais/64614605000155/2026/108",
-   "link_origem": "",
-   "_cnpj": "64614605000155",
-   "_ano": 2026,
-   "_seq": 108,
-   "primeiro_visto": "2026-10-19"
-  },
-  {
-   "id": "46694139000183-1-000956/2026",
-   "objeto": "Aquisição de tablets para o suporte técnico operacional aos fiscais nas atividades da Secretaria, especialmente nos processos de análise e aprovação de projetos e de fiscalização de obras.  \r\nDestacamos ainda que, por meio da Ata de Reunião da CMHDU, a proposta foi analisada e recebeu pareceu favorável da PGM que considerou legítima a utilização dos recursos do Fundo para tais finalidades.\r\nInformamos também que este PC é uma reabertura da SC 3696/2026 - GPRO 117080/2026.",
-   "orgao": "MUNICIPIO DE JACAREI",
-   "unidade": "GERAL",
-   "uf": "SP",
-   "municipio": "Jacareí",
-   "modalidade": "Dispensa",
-   "modalidade_id": 8,
-   "modo_disputa": "Dispensa Com Disputa",
-   "numero": "719",
-   "processo": "PC 000901/2026",
-   "srp": false,
-   "valor": 18792.0,
-   "abertura": "2026-10-19T16:00:00",
-   "encerramento": "2026-10-22T16:00:00",
-   "publicacao": "2026-10-19T16:04:08",
-   "categorias": [
-    "Serviço",
-    "Equipamento"
-   ],
-   "termos": [
-    "suporte tecnico",
-    "tablets"
-   ],
-   "fabricantes": [],
-   "pontos": 4,
-   "me_epp_texto": false,
-   "beneficio": "Ampla",
-   "orcamento_sigiloso": "nao",
-   "link_pncp": "https://pncp.gov.br/app/editais/46694139000183/2026/956",
-   "link_origem": null,
-   "_cnpj": "46694139000183",
-   "_ano": 2026,
-   "_seq": 956,
-   "primeiro_visto": "2026-10-19"
-  },
   {
    "id": "45093267000109-1-000137/2026",
    "objeto": "Contratação de empresa especializada em Licenciamento de plataforma integrada em nuvem (SaaS) para novos processos de Engenharia e Tributos, com usuários e processos ilimitados, incluindo implantação, parametrização, capacitação, hospedagem, conferência documental, suporte, manutenção e exportação dos dados",
@@ -5950,6 +5841,45 @@
    "primeiro_visto": "2026-10-19"
   },
   {
+   "id": "68004118000121-1-000052/2026",
+   "objeto": "Contratação de empresa especializada para prestação de serviço de telefonia fixa por PABX virtual em nuvem, com tecnologia VoIP, incluindo equipamentos, implantação, manutenção, suporte e gerenciamento.",
+   "orgao": "SEPREV - SERVICO DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES MUNICIPAIS DE INDAIATUBA",
+   "unidade": "SEPREV - SERVICO DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES MUNICIPAIS DE INDAIATUBA",
+   "uf": "SP",
+   "municipio": "Indaiatuba",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "35",
+   "processo": "4944/2026",
+   "srp": false,
+   "valor": 36245.76,
+   "abertura": "2026-10-22T10:30:00",
+   "encerramento": "2026-10-27T17:00:00",
+   "publicacao": "2026-10-22T10:07:27",
+   "categorias": [
+    "Serviço",
+    "Equipamento",
+    "Licença/Software"
+   ],
+   "termos": [
+    "nuvem",
+    "pabx",
+    "voip"
+   ],
+   "fabricantes": [],
+   "pontos": 9,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/68004118000121/2026/52",
+   "link_origem": "",
+   "_cnpj": "68004118000121",
+   "_ano": 2026,
+   "_seq": 52,
+   "primeiro_visto": "2026-10-22"
+  },
+  {
    "id": "01618430000134-1-000004/2026",
    "objeto": "[Portal de Compras Públicas] - 1.1. O objeto da presente licitação é a contratação de empresa especializada para licenciar, implantar, sustentar e evoluir solução tecnológica integrada destinada à Câmara Municipal de Marataízes/ES, composta por:\nI. Plataforma para Portal Institucional do Poder Legislativo, compreendendo página institucional, diário oficial eletrônico, carta de serviços, serviço de informação ao cidadão (e-SIC) e ouvidoria (e-OUV);\nII. Software para Gestão de Processos do Poder Legislativo, compreendendo a gestão dos processos administrativos e legislativos, com organização arquivística, tramitação por fluxos de trabalho em notação BPMN, informações legislativas e portais de legislação compilada e de produção legislativa;\nIII. Software para Gestão e Transparência de Emendas Parlamentares, compreendendo o cadastro e a apreciação de emendas à LOA e ao PPA e o acompanhamento da execução orçamentária;\nIV. Software de Inteligência Artificial para Transcrição e Pesquisa em Conteúdos Audiovisuais, compreendendo transcrição automática, pesquisa textual e portal público de consulta; e\nV. Serviços técnicos sob demanda de mapeamento e modelagem de processos em BPMN, de compilação de atos normativos e de desenvolvimento, customização, integração e manutenção evolutiva de aplicações web, medidos por UST,\nconforme especificações, quantitativos e condições do Termo de Referência (Anexo I) e de seus anexos.\n1.2. Integram o objeto os serviços de implantação, migração de dados, capacitação, suporte técnico remoto, manutenção e hospedagem gerenciada de cada componente, na forma do item 5 do Termo de Referência.\n1.3. O objeto tem natureza de serviço comum de tecnologia da informação, nos termos do art. 6º, inc. XIII, da Lei nº 14.133/2021, sendo continuados os serviços de sustentação (art. 106 da Lei nº 14.133/2021).",
    "orgao": "CAMARA MUNICIPAL DE MARATAIZES",
@@ -6492,6 +6422,41 @@
    "primeiro_visto": "2026-10-21"
   },
   {
+   "id": "00394502000144-1-014185/2026",
+   "objeto": "Fornecimento de notebooks, com o objetivo de atender a demanda do Navio-Patrulha Oceânico “Amazonas”,",
+   "orgao": "COMANDO DA MARINHA",
+   "unidade": "COMANDO DO GRUPAMENTO NAVAL DO SUDESTE",
+   "uf": "RJ",
+   "municipio": "Rio de Janeiro",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "81",
+   "processo": "63270.001188/2026-91",
+   "srp": false,
+   "valor": 43715.0,
+   "abertura": "2026-10-23T08:00:00",
+   "encerramento": "2026-10-29T08:00:00",
+   "publicacao": "2026-10-22T10:18:36",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "notebooks"
+   ],
+   "fabricantes": [],
+   "pontos": 3,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/00394502000144/2026/14185",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=78110006000812026",
+   "_cnpj": "00394502000144",
+   "_ano": 2026,
+   "_seq": 14185,
+   "primeiro_visto": "2026-10-22"
+  },
+  {
    "id": "96291141000180-1-006798/2026",
    "objeto": "Aquisição de Notebook para a Coordenadoria de Tecnologia da Informação.",
    "orgao": "SAO PAULO SECRETARIA DA ADMINISTRACAO PENITENCIARIA",
@@ -6634,6 +6599,44 @@
    "_ano": 2026,
    "_seq": 83,
    "primeiro_visto": "2026-10-20"
+  },
+  {
+   "id": "08082743000160-1-000063/2026",
+   "objeto": "Aquisição de acessórios, ferramentas e software de informática, destinados ao suporte técnico, à manutenção de equipamentos e à infraestrutura de tecnologia da informação, contemplando gaveta Dock Station, aplicativo para espelhamento de SSD e HD, alicate para crimpagem e conectores RJ45 vazados.",
+   "orgao": "SECRETARIA MUNICIPAL DA PESSOA COM DEFICIENCIA",
+   "unidade": "PMSP - SECRETARIA DA PESS COM DEF.E MOB. RED.",
+   "uf": "SP",
+   "municipio": "São Paulo",
+   "modalidade": "Dispensa",
+   "modalidade_id": 8,
+   "modo_disputa": "Dispensa Com Disputa",
+   "numero": "72",
+   "processo": "6065.2026/0000824-0",
+   "srp": false,
+   "valor": 0.0,
+   "abertura": "2026-10-23T08:00:00",
+   "encerramento": "2026-10-29T08:00:00",
+   "publicacao": "2026-10-22T10:21:38",
+   "categorias": [
+    "Serviço"
+   ],
+   "termos": [
+    "informatica",
+    "infraestrutura de tecnologia",
+    "software",
+    "suporte tecnico"
+   ],
+   "fabricantes": [],
+   "pontos": 9,
+   "me_epp_texto": false,
+   "beneficio": "Exclusiva ME/EPP",
+   "orcamento_sigiloso": "total",
+   "link_pncp": "https://pncp.gov.br/app/editais/08082743000160/2026/63",
+   "link_origem": "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=92512706000722026",
+   "_cnpj": "08082743000160",
+   "_ano": 2026,
+   "_seq": 63,
+   "primeiro_visto": "2026-10-22"
   },
   {
    "id": "18239624000121-1-000110/2026",
@@ -9536,6 +9539,42 @@
    "_ano": 2026,
    "_seq": 26,
    "primeiro_visto": "2026-10-19"
+  },
+  {
+   "id": "18240119000105-1-000336/2026",
+   "objeto": "[Portal de Compras Públicas] - Aquisição de equipamentos de informática para Unidades de Saúde de Varginha/MG",
+   "orgao": "MUNICIPIO DE VARGINHA",
+   "unidade": "Prefeitura do Município de Varginha",
+   "uf": "MG",
+   "municipio": "Varginha",
+   "modalidade": "Pregão - Eletrônico",
+   "modalidade_id": 6,
+   "modo_disputa": "Aberto",
+   "numero": "PE132",
+   "processo": "309/2026",
+   "srp": false,
+   "valor": 770775.44,
+   "abertura": "2026-10-20T08:30:00",
+   "encerramento": "2026-11-03T08:30:00",
+   "publicacao": "2026-10-19T10:08:12",
+   "categorias": [
+    "Equipamento"
+   ],
+   "termos": [
+    "equipamentos de informatica",
+    "informatica"
+   ],
+   "fabricantes": [],
+   "pontos": 5,
+   "me_epp_texto": false,
+   "beneficio": "Ampla",
+   "orcamento_sigiloso": "nao",
+   "link_pncp": "https://pncp.gov.br/app/editais/18240119000105/2026/336",
+   "link_origem": "https://www.portaldecompraspublicas.com.br/processos/MG/Prefeitura-do-Municipio-de-Varginha-1970/PE-PE132-2026-2026-519236",
+   "_cnpj": "18240119000105",
+   "_ano": 2026,
+   "_seq": 336,
+   "primeiro_visto": "2026-10-22"
   },
   {
    "id": "46638714000120-1-000394/2026",
