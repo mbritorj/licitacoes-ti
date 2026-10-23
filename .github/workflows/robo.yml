@@ -2,43 +2,98 @@ name: Robô de licitações
 
 on:
   schedule:
+    # horários em UTC: 09:30 = 06:30 em Brasília (todo dia) e 15:30 = 12:30 (dias úteis)
     - cron: "30 9 * * *"
     - cron: "30 15 * * 1-5"
-  workflow_dispatch: {}
+  workflow_dispatch:   # botão "Run workflow" para rodar na hora
+    inputs:
+      completa:
+        description: "Forçar coleta completa (ignora a coleta incremental)"
+        type: boolean
+        default: false
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: robo-licitacoes
   cancel-in-progress: false
 
+env:
+  SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+
 jobs:
-  coleta:
+  teste:
     runs-on: ubuntu-latest
-    timeout-minutes: 150
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - name: Testar a classificação
-        run: python tests/teste_classificacao.py
-
-      - name: Coletar licitações no PNCP
-        run: python robo.py
-
-      - name: Publicar resultado
+      - name: Testar classificação e fluxo
         run: |
-          git config user.name "robo-licitacoes"
-          git config user.email "actions@users.noreply.github.com"
-          git add docs/data.json
-          if git diff --cached --quiet; then
-            echo "Sem mudanças."
-          else
-            git commit -m "Atualiza licitações $(TZ=America/Sao_Paulo date '+%d/%m/%Y %H:%M')"
-            git pull --rebase
-            git push
-          fi
+          python tests/teste_classificacao.py
+          python tests/teste_fluxo.py
+
+  coleta:
+    needs: teste
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        grupo: [SP, MG, RJ-ES, SUL, NE, NO-CO]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Coletar ${{ matrix.grupo }} no PNCP
+        run: |
+          python coletor.py --grupo "${{ matrix.grupo }}" --base "$SITE_URL/bruto/" --saida bruto \
+            ${{ inputs.completa && '--completa' || '' }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bruto-${{ matrix.grupo }}
+          path: bruto/
+          retention-days: 3
+          if-no-files-found: ignore
+
+  painel:
+    needs: [teste, coleta]
+    if: ${{ always() && needs.teste.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: bruto-*
+          path: bruto
+          merge-multiple: true
+      - name: Montar o painel
+        run: |
+          python painel.py --bruto bruto --bruto-url "$SITE_URL/bruto/" --anterior "$SITE_URL/data.json" \
+            --site site --publicar-bruto
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  publicar:
+    needs: painel
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -1,17 +1,27 @@
 {
-  "_comentario": "Configuração do robô. Termos são expressões regulares aplicadas ao objeto da licitação já em minúsculas e sem acentos. Peso 3 = termo forte (sozinho já qualifica); peso 1 ou 2 = termo fraco (precisa somar com outro). Uma licitação entra no painel quando a soma dos pesos chega em pontuacao_minima. Ajuste de 18/10/2026 após a primeira coleta real: 'suporte técnico' e 'software' sozinhos passaram a peso 2 e entraram exclusões para relógio de ponto, painel de LED, raio-X, áudio e vídeo, rastreamento de veículos e impressão.",
-  "ufs": [
+  "_comentario": "Configuração do robô. Termos são expressões regulares aplicadas ao objeto da licitação já em minúsculas e sem acentos. Peso 3 = termo forte (sozinho já qualifica); peso 1 ou 2 = termo fraco (precisa somar com outro). Uma licitação entra no painel quando a soma dos pesos chega em pontuacao_minima. Ajuste de 18/10/2026 após a primeira coleta real: 'suporte técnico' e 'software' sozinhos passaram a peso 2 e entraram exclusões para relógio de ponto, painel de LED, raio-X, áudio e vídeo, rastreamento de veículos e impressão. Em 23/10/2026 a coleta passou a ser compartilhada (coletor.py + coleta.json, por grupos de UFs em paralelo). Este arquivo só define a classificação e a abrangência do painel da ISAKMP: 'ufs' = UFs consideradas ('todas' ou lista); 'ufs_por_categoria' restringe categorias a algumas UFs; 'ufs_foco' vale para licitações que entram só pelo nome do fabricante.",
+  "ufs": "todas",
+  "ufs_foco": [
     "RJ",
     "SP",
     "MG",
     "ES"
   ],
-  "modalidades": {
-    "4": "Concorrência Eletrônica",
-    "6": "Pregão Eletrônico",
-    "7": "Pregão Presencial",
-    "8": "Dispensa de Licitação"
+  "ufs_por_categoria": {
+    "Serviço": [
+      "RJ",
+      "SP",
+      "MG",
+      "ES"
+    ],
+    "Equipamento": [
+      "RJ",
+      "SP",
+      "MG",
+      "ES"
+    ]
   },
+  "descricao_escopo": "Licenças e software em todo o Brasil · serviços e equipamentos em RJ, SP, MG e ES",
   "dias_a_frente": 365,
   "pontuacao_minima": 3,
   "valor_limite_me_epp": 80000,
@@ -297,5 +307,6 @@
       "veiculos? automotor|emplacamento|licenciamento ambiental|impacto ambiental|compensacao florestal",
       -4
     ]
-  ]
+  ],
+  "max_consultas_itens": 400
 }

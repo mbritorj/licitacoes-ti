@@ -147,7 +147,7 @@ footer{margin-top:28px;font-size:12px;color:var(--ink-3)}
   <section class="filters" aria-label="Filtros">
     <div class="row"><input type="search" id="q" placeholder="Buscar no objeto, órgão ou município (ex.: cisco, suporte, Niterói)"></div>
     <div class="row"><label class="lbl">Tipo</label><span id="fcat" class="row"></span></div>
-    <div class="row"><label class="lbl">UF</label><span id="fuf" class="row"></span></div>
+    <div class="row"><label class="lbl">UF</label><span id="fuf" class="row"></span><select id="fufsel" aria-label="Região ou UF" hidden></select></div>
     <div class="row">
       <label class="lbl">Mais</label>
       <select id="fmod" aria-label="Modalidade"><option value="">Todas as modalidades</option></select>
@@ -205,6 +205,8 @@ const ALIAS = {"trajano de morais":"trajano de moraes", "comendador levy gaspari
 const chaveMun = s => { const n = norm(s).replace(/[^a-z ]/g," ").replace(/\s+/g," ").trim(); return ALIAS[n] || n; };
 
 const $ = id => document.getElementById(id);
+const REGIOES = {"Sudeste":["ES","MG","RJ","SP"],"Sul":["PR","RS","SC"],"Centro-Oeste":["DF","GO","MS","MT"],"Nordeste":["AL","BA","CE","MA","PB","PE","PI","RN","SE"],"Norte":["AC","AM","AP","PA","RO","RR","TO"]};
+const PAGINA = 100; let mostrar = PAGINA;
 const fmtBRL = v => Number(v).toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0});
 // Orçamento: o PNCP marca cada item com orcamentoSigiloso; o robô resume em "total", "parcial" ou "nao".
 function valorTxt(i){
@@ -302,14 +304,19 @@ function card(i){
 }
 
 let ultima = [];
-function render(){
+function render(maisUma){
   salvar();
+  if(!maisUma) mostrar = PAGINA;
   ultima = filtrar();
   $("count").textContent = `${ultima.length} de ${ITENS.length} licitações`;
-  $("list").innerHTML = ultima.length ? ultima.map(card).join("") :
+  const vis = ultima.slice(0, mostrar);
+  const resto = ultima.length - vis.length;
+  $("list").innerHTML = ultima.length ? vis.map(card).join("") +
+      (resto > 0 ? `<button class="btn" id="mais" type="button" style="justify-self:center;padding:10px 18px">Mostrar mais ${Math.min(resto, PAGINA)} (faltam ${resto})</button>` : "") :
     `<div class="empty">${ITENS.length ? "Nenhuma licitação com esses filtros." : "Ainda não há dados. O robô preenche esta página após a primeira execução no GitHub Actions."}</div>`;
 }
 
+document.addEventListener("click", e => { if(e.target && e.target.id==="mais"){ mostrar += PAGINA; render(true); } });
 function exportarCSV(){
   const cols = ["encerramento","uf","municipio","orgao","objeto","categorias","modalidade","numero","valor","beneficio","link_pncp","link_origem"];
   const linhas = [cols.join(";")].concat(ultima.map(i => cols.map(c => {
@@ -348,7 +355,26 @@ function ligar(){
 function montarFiltros(){
   chips($("fcat"), Object.keys(CATS), S.cats);
   const ufs = DATA.ufs && DATA.ufs.length ? DATA.ufs : [...new Set(ITENS.map(i=>i.uf))].sort();
-  chips($("fuf"), ufs, S.ufs);
+  if(ufs.length > 8){
+    $("fuf").hidden = true; const sel = $("fufsel"); sel.hidden = false;
+    const presentes = new Set(ITENS.map(i=>i.uf));
+    let h = '<option value="">Todas as UFs</option>';
+    for(const [reg, lista] of Object.entries(REGIOES)){
+      const l = lista.filter(u => ufs.includes(u)); if(!l.length) continue;
+      h += `<optgroup label="${reg}"><option value="R:${reg}">${reg} (todas)</option>` +
+           l.map(u => `<option value="${u}">${u}${presentes.has(u)?"":" (sem licitações)"}</option>`).join("") + "</optgroup>";
+    }
+    sel.innerHTML = h;
+    const atual = [...S.ufs].sort().join(",");
+    const reg = Object.entries(REGIOES).find(([r,l]) => l.filter(u=>ufs.includes(u)).sort().join(",") === atual && S.ufs.size > 1);
+    sel.value = reg ? "R:"+reg[0] : (S.ufs.size===1 ? [...S.ufs][0] : "");
+    sel.onchange = e => { S.ufs.clear(); const v = e.target.value;
+      if(v.startsWith("R:")) REGIOES[v.slice(2)].filter(u=>ufs.includes(u)).forEach(u=>S.ufs.add(u)); else if(v) S.ufs.add(v);
+      render(); };
+  } else {
+    $("fuf").hidden = false; $("fufsel").hidden = true;
+    chips($("fuf"), ufs, S.ufs);
+  }
   const mods = [...new Set(ITENS.map(i=>i.modalidade).filter(Boolean))].sort();
   $("fmod").innerHTML = '<option value="">Todas as modalidades</option>' + mods.map(m=>`<option>${esc(m)}</option>`).join("");
 }
@@ -429,7 +455,7 @@ async function iniciar(){
   const ex = DATA.execucao || {};
   $("dot").className = "dot " + (ex.status==="ok" ? "" : (ex.status||"falha"));
   $("upd").textContent = DATA.atualizado_em ? `Atualizado em ${fmtD(parseD(DATA.atualizado_em))}${ex.status==="parcial"?" (coleta parcial)":ex.status==="falha"?" (última coleta falhou)":""}` : "Sem dados ainda";
-  if(DATA.ufs) $("sub").textContent = `ISAKMP · propostas em aberto · ${DATA.ufs.join(", ")}`;
+  if(DATA.descricao_escopo || DATA.ufs) $("sub").textContent = `ISAKMP · propostas em aberto · ${DATA.descricao_escopo || DATA.ufs.join(", ")}`;
   if(ex.erros && ex.erros.length){
     $("errwrap").innerHTML = `<details class="err"><summary>${ex.erros.length} aviso(s) na coleta</summary><pre>${esc(ex.erros.join("\n"))}</pre></details>`;
   }

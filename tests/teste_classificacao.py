@@ -1,7 +1,7 @@
 import json, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from robo import Classificador
+from pncp import Classificador
 cfg = json.loads((Path(__file__).resolve().parent.parent / "config.json").read_text())
 c = Classificador(cfg)
 DEVE_ENTRAR = [
@@ -51,4 +51,18 @@ for txt in NAO_DEVE:
     ok = not r["relevante"]
     falhas += not ok
     print(("OK  " if ok else "FALHA"), r["pontos"], r["termos"], "|", txt[:70])
+# abrangência: licença vale no Brasil todo; serviço e equipamento só em RJ, SP, MG e ES
+POR_UF = [
+ ("Aquisição de licenças de uso do Microsoft 365 E3", "AM", True),
+ ("Aquisição de licenças de uso do Microsoft 365 E3", "RJ", True),
+ ("Contratação de serviços de cabeamento estruturado e rede lógica no prédio sede", "BA", False),
+ ("Contratação de serviços de cabeamento estruturado e rede lógica no prédio sede", "SP", True),
+ ("Registro de preços para aquisição de switches, roteadores e access points", "RS", False),
+ ("Renovação de subscrição de firewall Fortinet", "PE", True),
+]
+for txt, uf, esperado in POR_UF:
+    r = c.classificar(txt, uf)
+    ok = r["relevante"] == esperado
+    falhas += not ok
+    print(("OK  " if ok else "FALHA"), uf, r["pontos"], r["categorias"], "|", txt[:70])
 print("falhas:", falhas); sys.exit(1 if falhas else 0)

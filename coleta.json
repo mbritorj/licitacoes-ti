@@ -1,0 +1,21 @@
+{
+  "_comentario": "Coleta compartilhada do PNCP. Cada grupo roda em paralelo no GitHub Actions e grava bruto/<grupo>.json.gz com todas as contratações com propostas em aberto das suas UFs, sem filtro de assunto. Os painéis (ISAKMP aqui, Blue Belt no outro repositório) classificam a partir desses arquivos. A primeira coleta de cada grupo é completa; as seguintes buscam só o que foi publicado ou alterado desde a última, e uma coleta completa é refeita a cada 'dias_entre_coletas_completas'.",
+  "grupos": {
+    "SP": ["SP"],
+    "MG": ["MG"],
+    "RJ-ES": ["RJ", "ES"],
+    "SUL": ["PR", "SC", "RS"],
+    "NE": ["BA", "SE", "AL", "PE", "PB", "RN", "CE", "PI", "MA"],
+    "NO-CO": ["AM", "PA", "AC", "RO", "RR", "AP", "TO", "MT", "MS", "GO", "DF"]
+  },
+  "modalidades": {
+    "4": "Concorrência Eletrônica",
+    "6": "Pregão Eletrônico",
+    "7": "Pregão Presencial",
+    "8": "Dispensa de Licitação"
+  },
+  "dias_a_frente": 365,
+  "dias_entre_coletas_completas": 7,
+  "dias_sobreposicao_incremental": 1,
+  "pausa_entre_chamadas_seg": 5
+}
