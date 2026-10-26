@@ -106,6 +106,21 @@ input[type=search]{flex:1;min-width:200px}
 .pcard .src{font-size:12px;color:var(--ink-3)}
 .nf{color:var(--ink-3);font-size:12.5px}
 .sig{font-weight:600;font-size:13px;color:var(--violet);white-space:nowrap}
+.marca{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.mk{font:inherit;font-size:12.5px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:3px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.mk:hover{border-color:var(--ink-3)}
+.mk .ic{font-size:13px;line-height:1}
+.mk[aria-pressed="true"].m-ana{background:var(--info-soft);border-color:var(--info);color:var(--info)}
+.mk[aria-pressed="true"].m-int{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.mk[aria-pressed="true"].m-des{background:var(--surface-2);border-color:var(--ink-3);color:var(--ink-2)}
+.card.st-int{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset, var(--shadow);background:linear-gradient(90deg, var(--accent-soft), var(--surface) 55%)}
+.card.st-ana .obj{color:var(--ink-2);font-weight:500}
+.card.st-des{opacity:.55}
+.card.st-des .obj{text-decoration:line-through;text-decoration-color:var(--ink-3)}
+.marca-data{font-size:11.5px;color:var(--ink-3);align-self:center}
+.meta.meus{justify-content:flex-start}
+.meus{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13px;color:var(--ink-2)}
+.meus b{color:var(--ink);font-variant-numeric:tabular-nums}
 .empty{padding:40px 16px;text-align:center;color:var(--ink-2);background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius)}
 details.err{font-size:12.5px;color:var(--ink-2);margin-top:4px}
 details.err pre{white-space:pre-wrap;background:var(--surface-2);padding:8px;border-radius:8px;max-height:180px;overflow:auto}
@@ -163,11 +178,25 @@ footer{margin-top:28px;font-size:12px;color:var(--ink-3)}
       <label class="toggle"><input type="checkbox" id="fnovo"> Só novas</label>
       <label class="toggle"><input type="checkbox" id="fcnae"> Só aderentes ao CNAE atual</label>
       <label class="toggle"><input type="checkbox" id="fpeq"> Só municípios pequenos do RJ</label>
+      <select id="fmarca" aria-label="Minha análise">
+        <option value="">Minha análise: todas</option>
+        <option value="nao">Ainda não analisadas</option>
+        <option value="int">Com interesse em participar</option>
+        <option value="ana">Analisadas, sem decisão</option>
+        <option value="des">Descartadas</option>
+        <option value="-des">Todas, menos descartadas</option>
+      </select>
       <button class="btn" id="limpar" type="button">Limpar filtros</button>
     </div>
   </section>
 
   <div class="meta"><span id="count"></span><span id="errwrap"></span></div>
+  <div class="meta meus" id="meus">
+    <span id="meus-txt"></span>
+    <button class="btn" id="mexp" type="button" title="Salva suas marcações num arquivo, para guardar ou levar para outro computador">Exportar marcações</button>
+    <label class="btn" for="mimp" style="cursor:pointer" title="Carrega um arquivo exportado antes; junta com as marcações deste navegador">Importar marcações</label>
+    <input type="file" id="mimp" accept="application/json,.json" hidden>
+  </div>
   <main class="list" id="list"></main>
   </div>
 
@@ -198,7 +227,19 @@ footer{margin-top:28px;font-size:12px;color:var(--ink-3)}
 
 <script>
 const CATS = {"Serviço":"serv","Equipamento":"equip","Licença/Software":"lic"};
-const S = {q:"", cats:new Set(), ufs:new Set(), mod:"", prazo:"", ord:"enc", me:false, novo:false, cnae:false, peq:false};
+const S = {q:"", cats:new Set(), ufs:new Set(), mod:"", prazo:"", ord:"enc", me:false, novo:false, cnae:false, peq:false, marca:""};
+// Marcações da análise: ficam só neste navegador (localStorage), chave = número de controle do PNCP.
+// st: "ana" (analisada), "int" (interesse em participar), "des" (descartada)
+let MARCAS = {};
+const MARCA_KEY = "marcas-licit";
+const MARCA_INFO = {ana:["Analisada","✓"], int:["Tenho interesse","★"], des:["Descartar","✕"]};
+function carregarMarcas(){
+  try{ MARCAS = JSON.parse(localStorage.getItem(MARCA_KEY)||"{}") || {}; }catch(e){ MARCAS = {}; }
+  const limite = Date.now() - 180*864e5;   // esquece marcações com mais de 180 dias
+  for(const [k,v] of Object.entries(MARCAS)){ if(!v || !v.st || (v.em && Date.parse(v.em) < limite)) delete MARCAS[k]; }
+}
+function gravarMarcas(){ try{ localStorage.setItem(MARCA_KEY, JSON.stringify(MARCAS)); return true; }catch(e){ return false; } }
+const stDe = i => (i && MARCAS[i.id] && MARCAS[i.id].st) || "";
 let DATA = null, ITENS = [], PREF = null, PEQ = new Map();
 const PS = {q:"", reg:""};
 const ALIAS = {"trajano de morais":"trajano de moraes", "comendador levy gasparian":"comendador levy gasparian"};
@@ -265,7 +306,8 @@ function filtrar(){
     (!S.ufs.size || S.ufs.has(i.uf)) &&
     (!S.mod || i.modalidade===S.mod) &&
     (!S.prazo || (i._dias!=null && i._dias <= Number(S.prazo))) &&
-    (!S.me || i._me) && (!S.novo || i._novo) && (!S.cnae || i._aderente) && (!S.peq || i._peq)
+    (!S.me || i._me) && (!S.novo || i._novo) && (!S.cnae || i._aderente) && (!S.peq || i._peq) &&
+    (!S.marca || (S.marca==="nao" ? !stDe(i) : S.marca==="-des" ? stDe(i)!=="des" : stDe(i)===S.marca))
   );
   const k = {enc:(a,b)=>(a._enc||Infinity)-(b._enc||Infinity), pub:(a,b)=>(b.publicacao||"").localeCompare(a.publicacao||""),
              valor_d:(a,b)=>(valorNum(b)??-1)-(valorNum(a)??-1), valor_a:(a,b)=>(valorNum(a)??Infinity)-(valorNum(b)??Infinity)}[S.ord];
@@ -288,11 +330,16 @@ function card(i){
           : i.me_epp_texto ? '<span class="b me">ME/EPP (texto)</span>'
           : (i._me ? '<span class="b me">Até limite ME/EPP</span>' : "");
   const cnae = i._aderente ? "" : '<span class="b cnae" title="Fornecimento de bens/licenças exige CNAE de comércio, que a ISAKMP ainda não tem">exige CNAE de comércio</span>';
-  return `<article class="card${urg?" urg":""}">
+  const st = stDe(i), mk = MARCAS[i.id];
+  const botoes = Object.entries(MARCA_INFO).map(([k,[rot,ic]]) =>
+    `<button class="mk m-${k}" type="button" data-mk="${k}" data-id="${esc(i.id)}" aria-pressed="${st===k}"><span class="ic" aria-hidden="true">${ic}</span>${st===k && k==="des" ? "Descartada" : rot}</button>`).join("");
+  const quando = mk && mk.em ? `<span class="marca-data">marcada em ${new Date(mk.em).toLocaleDateString("pt-BR")}</span>` : "";
+  return `<article class="card${urg?" urg":""}${st?" st-"+st:""}" data-card="${esc(i.id)}">
     <div>
       <p class="obj">${esc(i.objeto)}</p>
       <div class="org">${esc(i.orgao)}${i.unidade && i.unidade!==i.orgao ? " · "+esc(i.unidade):""} · ${esc(i.municipio||"")}/${esc(i.uf||"")}</div>
       <div class="badges">${i._novo?'<span class="b novo">NOVA</span>':""}${cats}${fabs}${me}<span class="b">${esc(i.modalidade||"")}${i.numero?" "+esc(i.numero):""}</span>${i.srp?'<span class="b">SRP</span>':""}${i._peq?'<span class="b peq" title="Município do RJ com até 20 mil habitantes">Município pequeno</span>':""}${cnae}</div>
+      <div class="marca" role="group" aria-label="Minha análise">${botoes}${quando}</div>
       <div class="links">${i.link_pncp?`<a href="${esc(i.link_pncp)}" target="_blank" rel="noopener">Ver no PNCP ↗</a>`:""}${i.link_origem?`<a href="${esc(i.link_origem)}" target="_blank" rel="noopener">Portal da disputa ↗</a>`:""}</div>
     </div>
     <div class="side">
@@ -309,6 +356,7 @@ function render(maisUma){
   if(!maisUma) mostrar = PAGINA;
   ultima = filtrar();
   $("count").textContent = `${ultima.length} de ${ITENS.length} licitações`;
+  resumoMarcas();
   const vis = ultima.slice(0, mostrar);
   const resto = ultima.length - vis.length;
   $("list").innerHTML = ultima.length ? vis.map(card).join("") +
@@ -317,10 +365,59 @@ function render(maisUma){
 }
 
 document.addEventListener("click", e => { if(e.target && e.target.id==="mais"){ mostrar += PAGINA; render(true); } });
+
+function resumoMarcas(){
+  const abertas = new Set(ITENS.map(i=>i.id));
+  const c = {ana:0,int:0,des:0};
+  for(const [k,v] of Object.entries(MARCAS)) if(abertas.has(k) && c[v.st]!=null) c[v.st]++;
+  const nao = ITENS.length - c.ana - c.int - c.des;
+  $("meus-txt").innerHTML = `Minha análise: <b>${c.int}</b> com interesse · <b>${c.ana}</b> analisadas · <b>${c.des}</b> descartadas · <b>${nao}</b> sem marcação`;
+}
+function marcar(id, st){
+  const atual = MARCAS[id] && MARCAS[id].st;
+  if(atual === st) delete MARCAS[id];          // clicar de novo desfaz
+  else MARCAS[id] = {st, em: new Date().toISOString()};
+  if(!gravarMarcas()) $("meus-txt").textContent = "Este navegador não permite guardar marcações (janela anônima ou dados bloqueados).";
+  const card = document.querySelector(`[data-card="${CSS.escape(id)}"]`);
+  const i = ITENS.find(x => x.id===id);
+  // se o filtro de análise esconderia o card, redesenha a lista; senão, troca só o card
+  const visivel = !S.marca || filtrar().some(x => x.id===id);
+  if(card && i && visivel){ const tmp = document.createElement("div"); tmp.innerHTML = card_(i); card.replaceWith(tmp.firstElementChild); resumoMarcas(); }
+  else render(true);
+}
+const card_ = i => card(i).trim();
+document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest(".mk"); if(!b) return;
+  marcar(b.dataset.id, b.dataset.mk);
+});
+function exportarMarcas(){
+  const abertas = new Map(ITENS.map(i=>[i.id,i]));
+  const out = {gerado_em:new Date().toISOString(), marcas:MARCAS,
+    resumo:Object.entries(MARCAS).map(([k,v])=>({id:k, situacao:v.st, em:v.em, objeto:(abertas.get(k)||{}).objeto||"", orgao:(abertas.get(k)||{}).orgao||""}))};
+  const blob = new Blob([JSON.stringify(out,null,1)], {type:"application/json"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = `marcacoes-licitacoes-${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(a.href);
+}
+function importarMarcas(file){
+  const r = new FileReader();
+  r.onload = () => {
+    try{
+      const o = JSON.parse(r.result); const m = o.marcas || o; let n = 0;
+      for(const [k,v] of Object.entries(m)){
+        if(!v || !MARCA_INFO[v.st]) continue;
+        const atual = MARCAS[k];
+        if(!atual || (v.em||"") > (atual.em||"")){ MARCAS[k] = {st:v.st, em:v.em||new Date().toISOString()}; n++; }
+      }
+      gravarMarcas(); render(); $("meus-txt").insertAdjacentHTML("beforeend", ` · ${n} marcação(ões) importada(s)`);
+    }catch(err){ $("meus-txt").textContent = "Arquivo inválido. Use um arquivo gerado por \"Exportar marcações\"."; }
+  };
+  r.readAsText(file);
+}
 function exportarCSV(){
-  const cols = ["encerramento","uf","municipio","orgao","objeto","categorias","modalidade","numero","valor","beneficio","link_pncp","link_origem"];
+  const cols = ["minha_analise","encerramento","uf","municipio","orgao","objeto","categorias","modalidade","numero","valor","beneficio","link_pncp","link_origem"];
   const linhas = [cols.join(";")].concat(ultima.map(i => cols.map(c => {
     let v = i[c]; if(Array.isArray(v)) v = v.join(", ");
+    if(c==="minha_analise") v = ({ana:"analisada", int:"interesse", des:"descartada"})[stDe(i)] || "";
     if(c==="valor") v = i.orcamento_sigiloso==="total" ? "sigiloso" : (valorNum(i)==null ? "" : valorNum(i));
     v = v==null ? "" : String(v);
     return '"' + v.replace(/"/g,'""') + '"';
@@ -332,7 +429,10 @@ function exportarCSV(){
 
 function ligar(){
   $("q").value = S.q; $("fmod").value = S.mod; $("fprazo").value = S.prazo; $("ord").value = S.ord;
-  $("fme").checked = S.me; $("fnovo").checked = S.novo; $("fcnae").checked = S.cnae; $("fpeq").checked = S.peq;
+  $("fme").checked = S.me; $("fnovo").checked = S.novo; $("fcnae").checked = S.cnae; $("fpeq").checked = S.peq; $("fmarca").value = S.marca||"";
+  $("fmarca").onchange = e => { S.marca = e.target.value; render(); };
+  $("mexp").onclick = exportarMarcas;
+  $("mimp").onchange = e => { if(e.target.files[0]) importarMarcas(e.target.files[0]); e.target.value = ""; };
   $("q").oninput = e => { S.q = e.target.value; render(); };
   $("fmod").onchange = e => { S.mod = e.target.value; render(); };
   $("fprazo").onchange = e => { S.prazo = e.target.value; render(); };
@@ -342,7 +442,7 @@ function ligar(){
   $("fcnae").onchange = e => { S.cnae = e.target.checked; render(); };
   $("fpeq").onchange = e => { S.peq = e.target.checked; render(); };
   $("csv").onclick = exportarCSV;
-  $("limpar").onclick = () => { Object.assign(S,{q:"",mod:"",prazo:"",ord:"enc",me:false,novo:false,cnae:false,peq:false}); S.cats.clear(); S.ufs.clear(); montarFiltros(); ligar(); render(); };
+  $("limpar").onclick = () => { Object.assign(S,{q:"",mod:"",prazo:"",ord:"enc",me:false,novo:false,cnae:false,peq:false,marca:""}); S.cats.clear(); S.ufs.clear(); montarFiltros(); ligar(); render(); };
   document.querySelectorAll(".kpi").forEach(k => k.onclick = () => {
     Object.assign(S,{prazo:"",me:false,novo:false});
     if(k.dataset.kpi==="novas") S.novo = true;
@@ -439,7 +539,7 @@ function aba(qual){
 }
 
 async function iniciar(){
-  tema(); restaurar();
+  tema(); restaurar(); carregarMarcas();
   try{
     const r = await fetch("data.json?t=" + Date.now(), {cache:"no-store"});
     DATA = await r.json();
