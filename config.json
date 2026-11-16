@@ -308,5 +308,7 @@
       -4
     ]
   ],
-  "max_consultas_itens": 400
+  "max_consultas_itens": 400,
+  "buscar_arquivos": true,
+  "max_consultas_arquivos": 400
 }

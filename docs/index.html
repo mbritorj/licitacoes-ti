@@ -106,6 +106,16 @@ input[type=search]{flex:1;min-width:200px}
 .pcard .src{font-size:12px;color:var(--ink-3)}
 .nf{color:var(--ink-3);font-size:12.5px}
 .sig{font-weight:600;font-size:13px;color:var(--violet);white-space:nowrap}
+.docs{margin-top:8px;font-size:13px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.docs .lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+.docs a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--ink-3);max-width:34ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:bottom}
+.docs a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.docs a .t{color:var(--ink-3);font-size:12px}
+.docs details{display:inline}
+.docs summary{cursor:pointer;color:var(--accent);font-weight:600;list-style:none}
+.docs summary::-webkit-details-marker{display:none}
+.docs details[open] .mais{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:4px;flex-basis:100%}
+.docs .vazio{color:var(--ink-3);font-size:12.5px}
 .marca{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .mk{font:inherit;font-size:12.5px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:3px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
 .mk:hover{border-color:var(--ink-3)}
@@ -286,7 +296,7 @@ function enriquecer(i){
   return {...i, _enc:enc, _dias:dias, _me:me, _novo:i.primeiro_visto===hoje,
     _aderente:(i.categorias||[]).includes("Serviço"),
     _peq:i.uf==="RJ" && PEQ.has(chaveMun(i.municipio)),
-    _busca:norm([i.objeto,i.orgao,i.unidade,i.municipio,i.uf,(i.termos||[]).join(" "),(i.fabricantes||[]).join(" ")].join(" "))};
+    _busca:norm([i.objeto,i.orgao,i.unidade,i.municipio,i.uf,(i.termos||[]).join(" "),(i.fabricantes||[]).join(" "),(i.arquivos||[]).map(a=>a.titulo).join(" ")].join(" "))};
 }
 
 function chips(el, valores, set, rotulo=v=>v){
@@ -321,6 +331,19 @@ function prazoTxt(i){
   return `<strong>${Math.floor(i._dias)} dia${Math.floor(i._dias)>=2?"s":""}</strong> para encerrar`;
 }
 
+// documentos publicados no PNCP (edital, TR, anexos): o robô guarda título, tipo e link de download
+function docLink(a){
+  const tipo = a.tipo && a.tipo.toLowerCase() !== (a.titulo||"").toLowerCase() ? `<span class="t">${esc(a.tipo)}: </span>` : "";
+  return `<a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc((a.tipo?a.tipo+" · ":"")+a.titulo+(a.data?" · publicado em "+a.data.split("-").reverse().join("/"):""))}">${tipo}${esc(a.titulo)} ↓</a>`;
+}
+function docsTxt(i){
+  if(!Array.isArray(i.arquivos)) return "";
+  if(!i.arquivos.length) return '<div class="docs"><span class="lbl">Arquivos</span><span class="vazio">nenhum arquivo publicado no PNCP até a última consulta</span></div>';
+  const prim = i.arquivos.slice(0,3).map(docLink).join("");
+  const resto = i.arquivos.slice(3);
+  return `<div class="docs"><span class="lbl">Arquivos (${i.arquivos.length})</span>${prim}${resto.length?`<details><summary>+${resto.length} arquivo${resto.length>1?"s":""}</summary><div class="mais">${resto.map(docLink).join("")}</div></details>`:""}</div>`;
+}
+
 function card(i){
   const urg = i._dias!=null && i._dias <= 3;
   const cats = (i.categorias||[]).map(c => `<span class="b ${CATS[c]||""}">${esc(c)}</span>`).join("");
@@ -339,6 +362,7 @@ function card(i){
       <p class="obj">${esc(i.objeto)}</p>
       <div class="org">${esc(i.orgao)}${i.unidade && i.unidade!==i.orgao ? " · "+esc(i.unidade):""} · ${esc(i.municipio||"")}/${esc(i.uf||"")}</div>
       <div class="badges">${i._novo?'<span class="b novo">NOVA</span>':""}${cats}${fabs}${me}<span class="b">${esc(i.modalidade||"")}${i.numero?" "+esc(i.numero):""}</span>${i.srp?'<span class="b">SRP</span>':""}${i._peq?'<span class="b peq" title="Município do RJ com até 20 mil habitantes">Município pequeno</span>':""}${cnae}</div>
+      ${docsTxt(i)}
       <div class="marca" role="group" aria-label="Minha análise">${botoes}${quando}</div>
       <div class="links">${i.link_pncp?`<a href="${esc(i.link_pncp)}" target="_blank" rel="noopener">Ver no PNCP ↗</a>`:""}${i.link_origem?`<a href="${esc(i.link_origem)}" target="_blank" rel="noopener">Portal da disputa ↗</a>`:""}</div>
     </div>

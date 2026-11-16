@@ -25,6 +25,8 @@ except Exception:  # pragma: no cover
 
 API = "https://pncp.gov.br/api/consulta/v1"
 API_ITENS = "https://pncp.gov.br/api/pncp/v1/orgaos/{cnpj}/compras/{ano}/{seq}/itens"
+API_ARQUIVOS = "https://pncp.gov.br/api/pncp/v1/orgaos/{cnpj}/compras/{ano}/{seq}/arquivos"
+MAX_ARQUIVOS = 20
 USER_AGENT = "robo-licitacoes/2.0 (consulta publica; github.com/mbritorj)"
 
 REGIOES = {
@@ -346,6 +348,8 @@ def montar_item(reg, cls, hoje_iso):
         "me_epp_texto": me_texto,
         "beneficio": None,
         "orcamento_sigiloso": None,
+        "arquivos": None,
+        "arquivos_em": None,
         "link_pncp": link_pncp,
         "link_origem": reg.get("linkSistemaOrigem"),
         "_cnpj": cnpj,
@@ -353,6 +357,41 @@ def montar_item(reg, cls, hoje_iso):
         "_seq": seq,
         "primeiro_visto": hoje_iso,
     }
+
+
+def consultar_arquivos(cliente, item):
+    """Lista os documentos publicados no PNCP para a contratação (edital, termo de
+    referência, anexos...). Devolve uma lista de {titulo, tipo, url, data}, que pode
+    ser vazia quando o órgão ainda não anexou nada, ou None quando não foi possível ler."""
+    if not (item.get("_cnpj") and item.get("_ano") and item.get("_seq")):
+        return None
+    url = API_ARQUIVOS.format(cnpj=item["_cnpj"], ano=item["_ano"], seq=item["_seq"])
+    try:
+        resp = cliente.get(url)
+    except Exception as e:
+        log(f"  arquivos de {item['id']}: {e}")
+        return None
+    if resp is None:           # 204: nenhum documento
+        return []
+    docs = resp.get("documentos") or resp.get("data") or [] if isinstance(resp, dict) else resp
+    saida = []
+    for d in docs or []:
+        if not isinstance(d, dict) or d.get("statusAtivo") is False:
+            continue
+        link = d.get("url") or d.get("uri")
+        if not link:
+            continue
+        saida.append({
+            "titulo": (d.get("titulo") or "").strip() or (d.get("tipoDocumentoNome") or "Documento"),
+            "tipo": (d.get("tipoDocumentoNome") or "").strip(),
+            "url": link,
+            "data": (d.get("dataPublicacaoPncp") or "")[:10],
+            "seq": d.get("sequencialDocumento"),
+        })
+    saida.sort(key=lambda d: (d["seq"] is None, d["seq"] or 0))
+    for d in saida:
+        d.pop("seq", None)
+    return saida[:MAX_ARQUIVOS]
 
 
 def consultar_itens(cliente, item):

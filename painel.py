@@ -17,6 +17,7 @@ import argparse
 import json
 import shutil
 import sys
+from datetime import timedelta
 from pathlib import Path
 
 import pncp
@@ -126,6 +127,8 @@ def main():
                 item["primeiro_visto"] = antigo.get("primeiro_visto", hoje_iso)
                 item["beneficio"] = antigo.get("beneficio")
                 item["orcamento_sigiloso"] = antigo.get("orcamento_sigiloso")
+                item["arquivos"] = antigo.get("arquivos")
+                item["arquivos_em"] = antigo.get("arquivos_em")
             itens[item["id"]] = item
 
         cliente = pncp.ClientePNCP(pausa=float(cfg.get("pausa_entre_chamadas_seg", 5)))
@@ -147,6 +150,27 @@ def main():
                     item["orcamento_sigiloso"] = sigiloso
                 if n % 50 == 0:
                     log(f"  {n}/{len(pendentes)}")
+
+        # documentos publicados no PNCP (edital, TR, anexos): consulta as contratações novas
+        # e, a cada 12 horas, as que ainda estavam sem nenhum arquivo
+        if cfg.get("buscar_arquivos", True) and not args.offline:
+            corte = (inicio - timedelta(hours=12)).isoformat(timespec="seconds")
+            pend_arq = [i for i in itens.values()
+                        if i.get("arquivos") is None
+                        or (not i.get("arquivos") and (i.get("arquivos_em") or "") < corte)]
+            pend_arq.sort(key=lambda i: i.get("encerramento") or "9999")
+            limite = int(cfg.get("max_consultas_arquivos", 0) or 0)
+            total_arq = len(pend_arq)
+            if limite and total_arq > limite:
+                pend_arq = pend_arq[:limite]
+            log(f"Consultando arquivos de {len(pend_arq)} de {total_arq} contratações pendentes")
+            for n, item in enumerate(pend_arq, 1):
+                arqs = pncp.consultar_arquivos(cliente, item)
+                if arqs is not None:
+                    item["arquivos"] = arqs
+                    item["arquivos_em"] = agora().isoformat(timespec="seconds")
+                if n % 50 == 0:
+                    log(f"  {n}/{len(pend_arq)}")
 
         itens_lista = sorted(itens.values(), key=lambda i: (i.get("encerramento") or "9999"))
         problemas = [s for s in situacao if s["origem"] not in ("nova", "remota") or s["status"] != "ok"]

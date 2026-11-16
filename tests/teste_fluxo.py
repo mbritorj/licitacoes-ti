@@ -49,6 +49,18 @@ class H(BaseHTTPRequestHandler):
             return self._json([{"tipoBeneficioId": 1 if seq % 2 else 5,
                                 "tipoBeneficioNome": "Exclusiva" if seq % 2 else "Sem benefício",
                                 "orcamentoSigiloso": False}])
+        if u.path.endswith("/arquivos"):
+            seq = int(u.path.split("/")[-2])
+            if seq == 5:                       # órgão ainda não anexou documentos
+                self.send_response(204); self.end_headers(); return
+            base = "https://pncp.gov.br/pncp-api" + u.path.split("/api/pncp", 1)[-1]
+            return self._json([
+                {"sequencialDocumento": 2, "titulo": "TR_assinado.pdf", "tipoDocumentoNome": "Termo de Referência",
+                 "url": base + "/2", "dataPublicacaoPncp": "2026-11-10T09:00:00", "statusAtivo": True},
+                {"sequencialDocumento": 1, "titulo": "Edital.pdf", "tipoDocumentoNome": "Edital",
+                 "url": base + "/1", "dataPublicacaoPncp": "2026-11-10T09:00:00", "statusAtivo": True},
+                {"sequencialDocumento": 3, "titulo": "versao_antiga.pdf", "tipoDocumentoNome": "Edital",
+                 "url": base + "/3", "statusAtivo": False}])
         ep = u.path.rsplit("/", 1)[-1]
         if ep == "atualizacao" and ESTADO["recusar_atualizacao"]:
             self.send_response(404); self.end_headers(); return
@@ -71,6 +83,7 @@ srv = HTTPServer(("127.0.0.1", 0), H)
 threading.Thread(target=srv.serve_forever, daemon=True).start()
 pncp.API = f"http://127.0.0.1:{srv.server_port}/api/consulta/v1"
 pncp.API_ITENS = f"http://127.0.0.1:{srv.server_port}/api/pncp/v1/orgaos/{{cnpj}}/compras/{{ano}}/{{seq}}/itens"
+pncp.API_ARQUIVOS = f"http://127.0.0.1:{srv.server_port}/api/pncp/v1/orgaos/{{cnpj}}/compras/{{ano}}/{{seq}}/arquivos"
 
 tmp = Path(tempfile.mkdtemp())
 cfg_coleta = tmp / "coleta.json"
@@ -117,6 +130,9 @@ d = json.loads((tmp / "site" / "data.json").read_text())
 seqs = {i["_seq"]: i for i in d["itens"]}
 assert set(seqs) == {3, 4, 5}, set(seqs)          # medicamentos e toner ficam de fora
 assert seqs[3]["beneficio"] == "Exclusiva ME/EPP" and seqs[4]["beneficio"] == "Ampla"
+assert [a["tipo"] for a in seqs[3]["arquivos"]] == ["Edital", "Termo de Referência"], seqs[3]["arquivos"]
+assert seqs[3]["arquivos"][0]["url"].endswith("/arquivos/1") and seqs[3]["arquivos"][0]["data"] == "2026-11-10"
+assert seqs[5]["arquivos"] == [] and seqs[5]["arquivos_em"], "sem documentos: lista vazia, para tentar de novo depois"
 assert (tmp / "site" / "index.html").exists() and (tmp / "site" / "bruto" / "RJ-ES.json.gz").exists()
 assert ler(tmp / "site" / "bruto" / "indice.json")["grupos"][0]["grupo"] == "RJ-ES"
 
@@ -133,6 +149,7 @@ assert rodar(painel, "--bruto-url", f"{url}bruto/", "--grupos", "RJ-ES", "--ante
 d2 = json.loads((tmp / "site2" / "data.json").read_text())
 assert {i["_seq"] for i in d2["itens"]} == {3, 4, 5}
 assert d2["itens"][0]["beneficio"] is not None, "benefício já consultado deveria ser mantido"
+assert {i["_seq"]: i["arquivos"] for i in d2["itens"]}[3], "arquivos já consultados deveriam ser mantidos"
 assert d2["coleta"][0]["origem"] == "remota"
 
 print("FLUXO OK")
