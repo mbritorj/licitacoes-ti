@@ -25,6 +25,7 @@ import csv
 import html
 import io
 import json
+import logging
 import re
 import shutil
 import subprocess
@@ -42,6 +43,10 @@ import pncp
 from pncp import log, normalizar, agora
 
 BASE = Path(__file__).resolve().parent
+logging.getLogger("pypdf").setLevel(logging.ERROR)
+logging.getLogger("fontTools").setLevel(logging.ERROR)
+import warnings
+warnings.filterwarnings("ignore")
 MAX_BYTES = 25 * 1024 * 1024
 RX_EMAIL = re.compile(r"[a-z0-9][a-z0-9._%+-]*@[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,}", re.I)
 RX_BOM_LOCAL = re.compile(r"licit|compra|cpl|pregao|pregoeir|dispensa|contrat|suprim|cotac|aquisic|"
@@ -54,6 +59,9 @@ FEDERAL = re.compile(r"ministerio|comando d[aoe]|exercito|marinha|aeronautica|un
                      r"conselho regional|conselho federal|instituto nacional|empresa brasileira|"
                      r"superintendencia regional|policia federal|policia rodoviaria federal|"
                      r"advocacia-geral|receita federal|ibge|ibama|icmbio|inss|funai|fiocruz|cnpq|capes|ebserh")
+RX_SETOR_LOCAL = re.compile(r"contato|administra|^adm|informatica|^ti$|^ti[._-]|tecnologia|prefeitura|secretaria|"
+                            r"fundo|saude|camara|financ|planejamento|suporte|atendimento|expediente|geral|"
+                            r"secretari|diretoria|gerencia|coordenac|departamento|setor|nucleo|^semad|^sead")
 PRIORIDADE_DOC = [r"aviso", r"edital", r"termo de referencia|\btr\b", r"projeto basico", r"estudo tecnico|etp"]
 PEQUENAS = {"de", "da", "do", "das", "dos", "e", "a", "o", "em", "na", "no", "para"}
 SIGLAS = {"rj", "sp", "mg", "es", "ba", "df", "rs", "go", "ti", "tic", "uerj", "ufrj", "saae", "ipedf", "sesc"}
@@ -131,8 +139,10 @@ def baixar(url, pausa_cliente):
 def texto_pdf(dados):
     try:
         from pypdf import PdfReader
-        leitor = PdfReader(io.BytesIO(dados))
-        return "\n".join((p.extract_text() or "") for p in leitor.pages[:80])
+        import contextlib
+        with contextlib.redirect_stderr(io.StringIO()), contextlib.redirect_stdout(io.StringIO()):
+            leitor = PdfReader(io.BytesIO(dados))
+            return "\n".join((p.extract_text() or "") for p in leitor.pages[:80])
     except ImportError:
         pass
     except Exception as e:
@@ -189,6 +199,16 @@ def emails_do_texto(texto):
     return achados
 
 
+def eh_pessoal(email):
+    """E-mail de servidor (nome.sobrenome, iniciais): não é caixa de setor."""
+    local = normalizar(email.partition("@")[0])
+    return not (RX_BOM_LOCAL.search(local) or RX_SETOR_LOCAL.search(local))
+
+
+def dominio(email):
+    return email.partition("@")[2].lower()
+
+
 def pontuar(email, plataformas):
     local, _, dominio = email.partition("@")
     if any(p in dominio for p in plataformas):
@@ -240,7 +260,7 @@ def achar_email(item, cliente, pausa, cfg):
         if any(pontuar(e, plataformas) >= 5 for e in encontrados):
             break
     plataformas = cfg.get("dominios_plataforma", [])
-    validos = sorted((e for e in encontrados if pontuar(e, plataformas) > -100),
+    validos = sorted((e for e in encontrados if pontuar(e, plataformas) > -100 and not eh_pessoal(e)),
                      key=lambda e: -pontuar(e, plataformas))
     return validos, fonte
 
@@ -344,11 +364,29 @@ pre{{white-space:pre-wrap;background:#f6f8f9;padding:10px;border-radius:6px}}
 # histórico e seleção
 # --------------------------------------------------------------------------
 
+def data_iso(valor):
+    v = (valor or "").strip()
+    for fmt in ("%Y-%m-%d", "%d/%m/%Y", "%d/%m/%y"):
+        try:
+            return datetime.strptime(v, fmt).strftime("%Y-%m-%d")
+        except ValueError:
+            continue
+    return v
+
+
 def ler_historico(caminho):
+    """Lê contatos.csv tolerando o arquivo salvo pelo Excel (datas dd/mm/aa, linhas vazias, vírgula)."""
     if not caminho.exists():
         return []
-    with caminho.open(encoding="utf-8-sig", newline="") as f:
-        return list(csv.DictReader(f, delimiter=";"))
+    texto = caminho.read_text(encoding="utf-8-sig", errors="ignore")
+    sep = ";" if texto.count(";") >= texto.count(",") else ","
+    linhas = []
+    for h in csv.DictReader(io.StringIO(texto), delimiter=sep):
+        if not (h.get("email") or "").strip():
+            continue
+        h["data"] = data_iso(h.get("data"))
+        linhas.append(h)
+    return linhas
 
 
 def acrescentar_historico(caminho, linhas):
@@ -392,7 +430,10 @@ def selecionar(itens, cfg, historico, hoje):
         candidatos.append(i)
     candidatos.sort(key=lambda i: (i.get("uf") not in prefer, -(i.get("pontos") or 0),
                                    "".join(chr(255 - ord(c)) for c in (i.get("publicacao") or ""))))
-    return candidatos, bloqueados_email
+    dominios_recentes = {dominio(h.get("email") or "") for h in historico
+                         if (h.get("data") or "") >= corte_rep and h.get("status", "").lower() != "descartado"}
+    dominios_recentes.discard("")
+    return candidatos, bloqueados_email, dominios_recentes
 
 
 # --------------------------------------------------------------------------
@@ -420,10 +461,14 @@ def main():
     dia = hoje.strftime("%Y-%m-%d")
     historico_path = Path(args.historico)
     historico = ler_historico(historico_path)
-    candidatos, bloqueados_email = selecionar(dados["itens"], cfg, historico, hoje)
+    candidatos, bloqueados_email, dominios_usados = selecionar(dados["itens"], cfg, historico, hoje)
     log(f"{len(candidatos)} contratações candidatas; meta: {qtd} rascunhos")
 
     pasta = Path(args.saida) / dia
+    n_pasta = 2
+    while pasta.exists() and any(pasta.iterdir()):
+        pasta = Path(args.saida) / f"{dia}_{n_pasta}"
+        n_pasta += 1
     pasta.mkdir(parents=True, exist_ok=True)
     cliente = pncp.ClientePNCP(pausa=args.pausa)
     pausa = Pausa(args.pausa)
@@ -435,13 +480,16 @@ def main():
         tentativas += 1
         log(f"[{tentativas}] {item.get('orgao')} / {item.get('unidade')} ({item.get('uf')})")
         emails, doc = achar_email(item, cliente, pausa, cfg)
-        emails = [e for e in emails if normalizar(e) not in bloqueados_email and e not in usados]
+        emails = [e for e in emails if normalizar(e) not in bloqueados_email and e not in usados
+                  and dominio(e) not in dominios_usados]
         if not emails:
             sem_email.append(item)
-            log("    nenhum e-mail aproveitável")
+            log("    nenhum e-mail de setor aproveitável (ou órgão já contatado pelo mesmo domínio)")
             continue
         para = emails[0]
         usados.add(para)
+        if not dominio(para).endswith(("gmail.com", "hotmail.com", "outlook.com", "yahoo.com.br", "yahoo.com")):
+            dominios_usados.add(dominio(para))
         assunto, corpo, contratacao, federal = montar_rascunho(item, cfg)
         n = len(escolhidos) + 1
         slug = re.sub(r"[^a-z0-9]+", "_", normalizar(item.get("orgao")))[:40].strip("_")
