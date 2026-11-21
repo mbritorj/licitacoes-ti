@@ -1,0 +1,63 @@
+{
+  "_comentario": "Configuração da etapa de prospecção (prospeccao.py). Gera, por dia, rascunhos de e-mail pedindo cadastro de fornecedor, cada um citando uma contratação do painel. Termos em 'excluir_orgaos' são expressões regulares aplicadas ao nome do órgão e da unidade em minúsculas e sem acentos.",
+  "painel_url": "https://mbritorj.github.io/licitacoes-ti/data.json",
+  "quantidade": 10,
+  "categorias": [
+    "Serviço"
+  ],
+  "ufs_preferidas": [
+    "RJ",
+    "SP",
+    "MG",
+    "ES"
+  ],
+  "dias_publicacao": 30,
+  "dias_sem_repetir_orgao": 120,
+  "max_documentos_por_contratacao": 3,
+  "max_tentativas": 40,
+  "sicaf_ativo": false,
+  "remetente": "comercial@isakmp.tech",
+  "assinatura": "Marcio Brito\nISAKMP Tecnologia da Informação Ltda\n(21) 99035-7803 | comercial@isakmp.tech",
+  "excluir_orgaos": [
+    "assembleia legislativa do estado do rio",
+    "camara municipal do rio de janeiro",
+    "comlurb|companhia municipal de limpeza urbana",
+    "detran",
+    "instituto nacional da propriedade industrial",
+    "banco de desenvolvimento de minas gerais",
+    "secretaria de estado da fazenda do espirito santo",
+    "eletronuclear",
+    "furnas|axia",
+    "cemig",
+    "taesa",
+    "petrobras|petroleo brasileiro"
+  ],
+  "dominios_plataforma": [
+    "bll.org.br",
+    "bllcompras",
+    "licitanet",
+    "portaldecompraspublicas",
+    "comprasnet",
+    "serpro.gov.br",
+    "compras.gov.br",
+    "bnc.org.br",
+    "licitardigital",
+    "bbmnet",
+    "comprasbr",
+    "ecustomize",
+    "elotech",
+    "betha",
+    "ipm.com.br",
+    "governancabrasil",
+    "publinexo",
+    "conam",
+    "gmail.com.br.invalid"
+  ],
+  "servicos": [
+    "suporte técnico e manutenção de infraestrutura de TI (servidores Windows e Linux, redes LAN, WAN e Wi-Fi);",
+    "consultoria, projeto de redes e segurança da informação;",
+    "instalação, configuração e migração de switches, roteadores e firewalls;",
+    "desenvolvimento de sistemas e sites, hospedagem e tratamento de dados."
+  ],
+  "frase_ampliacao": "Estamos ampliando o fornecimento para licenciamento de software e podemos responder cotações nessa linha em breve."
+}
