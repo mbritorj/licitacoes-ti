@@ -1,3 +1,11 @@
 __pycache__/
-site/
-bruto/
+*.pyc
+tests/data_amostra.json
+
+# prospecção: e-mails e histórico de contatos ficam só no Mac
+rascunhos/
+contatos.csv
+
+# arquivos do Mac e logs locais
+.DS_Store
+LOG - NÃO FAZER UPLOAD PARA O GITHUB/
